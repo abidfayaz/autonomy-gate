@@ -3,15 +3,15 @@
 Things deliberately left, deferred, or awaiting a decision. None of these block
 the build; each names who or what unblocks it.
 
-Last updated: end of Phase 11.
+Last updated: end of Phase 12. The build is complete.
 
 ---
 
 ## 1. Blocked on you
 
-### 1.1 Public Vercel URL — not yet live
+### 1.1 Public Vercel URL
 
-**Raised:** Phase 3. **Still open.**
+**Done.** Live at <https://autonomy-gate.vercel.app>.
 
 The Vercel CLI is installed but logged out, and I do not authenticate on your
 behalf. Everything else is ready: zero-config, no `vercel.json`, no environment
@@ -24,9 +24,9 @@ npx vercel --prod
 
 This is the only unmet acceptance criterion from Phase 3.
 
-### 1.2 Nothing is committed
+### 1.2 Committed
 
-**Raised:** Phase 3. **Still open.**
+**Done.** Two commits on `main`.
 
 The repository is initialised and everything is staged, but there are no commits;
 I only commit when asked. Needed before connecting Vercel to GitHub rather than

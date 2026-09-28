@@ -1,5 +1,7 @@
 # Autonomy Gate
 
+**Live: <https://autonomy-gate.vercel.app>**
+
 A synthetic portfolio prototype demonstrating how AI autonomy is **earned and governed at the
 task level** — never at the whole-agent level.
 
@@ -27,6 +29,11 @@ autonomy outcome. See `.env.example` for the two optional model-backed layers.
 npm run check   # typecheck + tests + production build
 npm run seed    # regenerate data/seed/dataset.json from the fixed seed
 ```
+
+## Demo
+
+- [Demo script](docs/demo-script.md) — a five-minute walkthrough and a one-minute version.
+- [Acceptance matrix](docs/acceptance-matrix.md) — every MVP criterion, checked against the live site.
 
 ## Open items
 
@@ -67,4 +74,4 @@ npx vercel --prod
 | 9 | Bounded judgment layer → first demo milestone | Done |
 | 10 | Explanation layer | Done |
 | 11 | Real TypeSafe provider + disclosure | Done |
-| 12 | Content pass, acceptance matrix, demo script | Next |
+| 12 | Content pass, acceptance matrix, demo script | Done |
