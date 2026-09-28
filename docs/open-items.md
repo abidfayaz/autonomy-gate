@@ -1,166 +1,150 @@
 # Open items
 
-Things deliberately left, deferred, or awaiting a decision. None of these block
-the build; each names who or what unblocks it.
+**V1 is complete.** Live at <https://autonomy-gate.vercel.app>, committed on
+`main`, 447 tests, typecheck clean, production build green.
 
-Last updated: end of Phase 12. The build is complete.
+Nothing below blocks release. This file records genuinely optional work, accepted
+deviations, and deliberate design calls.
 
----
-
-## 1. Blocked on you
-
-### 1.1 Public Vercel URL
-
-**Done.** Live at <https://autonomy-gate.vercel.app>.
-
-The Vercel CLI is installed but logged out, and I do not authenticate on your
-behalf. Everything else is ready: zero-config, no `vercel.json`, no environment
-variables needed.
-
-```bash
-npx vercel login
-npx vercel --prod
-```
-
-This is the only unmet acceptance criterion from Phase 3.
-
-### 1.2 Committed
-
-**Done.** Two commits on `main`.
-
-The repository is initialised and everything is staged, but there are no commits;
-I only commit when asked. Needed before connecting Vercel to GitHub rather than
-uploading through the CLI.
-
-### 1.3 TypeSafe API key
-
-**Built in Phase 11, unused until a key exists.** `@typesafe-ai/sdk@0.6.0` is
-installed and the adapter sits behind the unchanged interface. Verified live: with
-a key the provider is used and fails closed to `uncertain` when the key is
-rejected; without one the mock answers and the About panel says so.
-Details: `docs/typesafe-adapter-notes.md`.
-
-### 1.4 Groq API key
-
-**Built in Phase 10, unused until a key exists.** Absent, the deterministic
-"Standard summary" is shown and labelled as such. No autonomy outcome depends on
-it either way, which is asserted by test. `GROQ_MODEL` overrides the default
-small model if the named one is unavailable.
+Last updated: end of Phase 12, after live-site validation.
 
 ---
 
-## 2. Known deviations, accepted
+## 1. Optional post-MVP enhancements
 
-### 2.1 Dataset is 1,444 runs, not the PRD's 800–1,000
+None of these is required. The public prototype works honestly and completely
+without either credential, and the About panel says which parts are seeded.
 
-**Phase 1.** Forced arithmetic: the four approved demo journeys require
-342 + 300 + 200 + 200 = 1,042 runs by policy before the other four tasks exist.
-No historical pre-window evidence is generated, and the four non-journey tasks
-total only 354 runs. Bundled and deterministic; 36 KB gzipped.
+### 1.1 Live bounded classification
 
-### 2.2 Three figures differ from the locked snapshot
+`@typesafe-ai/sdk@0.6.0` is installed and `TypeSafeJevProvider` sits behind the
+unchanged `JudgmentProvider` interface. Setting `TYPESAFE_API_KEY` in the Vercel
+project switches to it; nothing above the provider changes.
 
-**Phase 1.** Not reachable as integers at n=342:
+Verified both ways: with a credential the real provider is used and fails closed
+to `uncertain` when the key is rejected; without one the seeded provider answers
+and the disclosure reflects it.
 
-| Figure | Specified | Actual | Why |
+### 1.2 Live plain-language summaries
+
+Setting `GROQ_API_KEY` switches the wording from the deterministic template to a
+rephrasing of the same decision. `GROQ_MODEL` overrides the default small model.
+
+A test asserts every autonomy outcome is identical with the layer removed, so
+this changes presentation only.
+
+### 1.3 Other genuinely optional work
+
+- Push to GitHub so the code is readable alongside the demo.
+- A custom domain in place of the `vercel.app` address.
+- Light theme. The approved reference screens are dark-only and so is the build.
+
+---
+
+## 2. Accepted deviations
+
+Each was raised, decided, and is closed.
+
+### 2.1 Dataset is 1,444 runs, not the PRD's 800-1,000
+
+Forced arithmetic: the four demo journeys require 342 + 300 + 200 + 200 = 1,042
+runs by policy before the other four tasks exist. No pre-window evidence is
+generated and the four non-journey tasks total 354 runs. Bundled, deterministic,
+36 KB gzipped. **Accepted.**
+
+### 2.2 Three figures differ from the earlier placeholder snapshot
+
+Not reachable as integers at n=342:
+
+| Figure | Placeholder | Actual | Why |
 |---|---:|---:|---|
 | Accuracy | 98.6% | 98.5% | 337/342 = 98.54%, 338/342 = 98.83% |
 | Confident-but-wrong | 0.7% | 0.88% | 2/342 = 0.58%, 3/342 = 0.88% |
-| Sampled error rate | 0.8% | 0.0% | 41 sampled; 0 → 0%, 1 → 2.4% |
+| Sampled error rate | 0.8% | 0.0% | 41 sampled; 0 gives 0%, 1 gives 2.4% |
 
 Gating behaviour is identical: one failing criterion, and it is
-confident-but-wrong. Moving the count to ~429 would hit 0.7% exactly, if you
-would rather have the stated figure than the stated count.
+confident-but-wrong. **Accepted - the generated values stand.**
 
 ### 2.3 Tailwind 3.4 rather than 4.x
 
-**Phase 0.** The approved screens are a Tailwind v3 config, extracted
-programmatically into `design/tokens.json`. v4 would require re-deriving nine
-`fontSize` triples by hand and overriding `rounded-full`, which v4 hardcodes to
-`calc(infinity * 1px)` while the mockups define it as `0.75rem`. Reversible.
+The approved screens are a v3 config, extracted programmatically into
+`design/tokens.json`. **Accepted.**
 
-### 2.4 `AGENT_ID` chip dropped from Screen 1
+### 2.4 No `AGENT_ID` chip on Screen 1
 
-**Phase 3.** The mockups show `AGENT_ID: AGT-INV-004`. Those identifiers do not
-exist in the data model, and inventing decorative technical IDs conflicts with
-PRD §3.10. Easy to restore if you want the visual detail.
+Those identifiers do not exist in the data model, and decorative technical IDs
+conflict with PRD section 3.10. **Accepted - not restored.**
 
-### 2.5 Confirming the classification as critical reads `RESTRICT_SCOPE`
+### 2.5 Confirming the classification as critical yields `RESTRICT_SCOPE`
 
-**Confirmed in Phase 9, in the browser.** Settling the outstanding classification
-as critical blocks eligibility and recomputes immediately, as agreed. Because the
-error sits in Complex AU while the routine segments stay clean, the engine argues
-for a narrower fence rather than stopping the task outright.
+The error sits in Complex AU while the routine segments stay clean, so the engine
+argues for a narrower fence rather than stopping the task outright. This is the
+section 24.5 behaviour. **Accepted.**
 
-**Phase 2, verified by test.** Confirming the pending classification as
-`critical_error` does block eligibility and does recompute immediately, as
-agreed. But the error sits in Complex AU while the routine segments stay clean,
-so the engine argues for a narrower fence rather than stopping the task. This is
-the §24.5 behaviour and reads as the better demonstration. Say the word if you
-want the blanket block instead.
+### 2.6 Brief flash before a visitor's changes apply
+
+Pages are prerendered from the seeded state; a visitor's changes live in their
+browser. About a tenth of a second, after which a banner explains what changed.
+**Accepted.**
 
 ---
 
-## 3. Deliberate design calls worth a second opinion
+## 3. Deliberate design calls
 
-### 3.1 A not-applicable criterion does not block
+### 3.1 Not applicable never excuses a mandatory requirement
 
-**Phase 2.** Where a window contained no opportunity to measure something — no
-escalation cases, for instance — the criterion shows **Not applicable** rather
-than **Pass**, and does not block promotion. Showing a green Pass for an
-untested requirement would be worse; blocking on a requirement that had no
-chance to be tested would also be wrong. Reported honestly, non-blocking.
+Two different reasons a criterion can be unmeasurable, and they behave
+differently:
 
-### 3.2 Scope restriction is always available
+- **No opportunity to observe.** No case in the window called for escalation, so
+  escalation quality could not be judged either way. Reported as *Not
+  applicable*, and does not block. This is the only such criterion.
+- **Mandatory, evidence absent.** A policy requiring 10% of completed cases be
+  sampled is not satisfied by sampling none of them. Required sampling, sampled
+  error rate and override rate all **fail** when unmeasurable, and block.
 
-**Phase 5.** Narrowing the fence reduces exposure, so it is offered even while
-evaluation is blocked. Only promotion is gated by eligibility.
+Minimum stage evidence, rule alignment and evidence coverage are counted directly
+and are always measurable.
 
-### 3.3 Brief flash before a visitor's changes apply
+### 3.2 Scope restriction while blocked
 
-**Phase 7.** Pages are server-rendered or prerendered from the seeded state, and
-a visitor's decisions and policy versions live in their browser. So there is a
-short moment after load where the seeded scorecard shows before the client
-re-renders with their changes applied. Roughly a tenth of a second, and the
-banner then explains what changed. Removing it entirely would mean giving up
-static rendering or moving visitor state to a server, neither of which is worth
-it for a prototype.
+Narrowing scope stays available to a person whenever promotion is blocked,
+because reducing exposure is conservative.
 
-### 3.4 Evaluator-maturity guardrail is computed but not enforced
+But where evaluation is paused because the evidence itself cannot be trusted - a
+rule-version mismatch, an unrevalidated configuration, an open blocking issue -
+the product proposes **no segments of its own**. Deriving a fence from the
+evaluation it has just declared untrustworthy would be incoherent. The option is
+offered with the existing scope, and the narrower boundary is the reviewer's to
+choose. Promotion remains unavailable either way.
 
-**Phase 2.** `unresolved_classification_rate` is computed and exposed on the
-metrics. PRD §12.4 says the 10% guardrail "does not directly change autonomy
-unless encoded in policy", and the prototype policies deliberately do not encode
-it. The hook is in place if you want it to gate.
+### 3.3 Evaluator-maturity rate measured but non-gating
 
----
-
-## 4. Carried into later phases
-
-| Item | Lands in |
-|---|---|
-
-
-
-
-
-
-| Comprehension checkpoint | Done — see `docs/comprehension-checkpoint.md` |
+`unresolved_classification_rate` is computed and exposed on the metrics. PRD
+section 12.4 says the 10% guardrail "does not directly change autonomy unless
+encoded in policy", and the prototype policies deliberately do not encode it. The
+hook is in place. **Accepted for V1.**
 
 ---
 
-## 5. Resolved
+## 4. Resolved during the build
 
-- **Stale-HMR error `BLOCKING_PHRASES is not defined`** (Phase 5). Seen in the
-  browser console after editing files while the dev server was running.
-  Investigated rather than assumed: the constant is defined and used correctly,
-  and a clean restart produces no error. A dev-server artifact, not a defect.
+- **Mandatory criteria could become non-blocking N/A** (Phase 12). Sample
+  coverage, sampled error rate and override rate all silently stopped blocking
+  when unmeasurable. Fixed; only escalation quality remains observation-dependent.
+- **A fence was proposed from untrustworthy evidence** (Phase 12). Fixed.
+- **Navigation unreachable on a phone** (Phase 12). Labels wrapped onto three
+  lines and Audit Log was clipped with no way to reach it. The strip now scrolls.
 - **Three incoherent bounded classifications** (Phase 2). Confirmed critical and
-  material errors were attached to runs the agent got *right*, and one asserted a
-  second unrelated critical error. All retargeted; three seed invariants now make
-  the class of error impossible to reintroduce silently.
-- **`next lint` removed in Next 16** (Phase 3). The Phase 0 script was broken;
-  replaced with the ESLint CLI.
+  material errors were attached to runs the agent got right. Retargeted, with
+  three seed invariants to prevent recurrence.
+- **Stale-HMR error** (Phase 5). Investigated rather than assumed; a dev-server
+  artifact, not a defect.
+- **`next lint` removed in Next 16** (Phase 3). Replaced with the ESLint CLI.
 - **Scope table could not explain its own verdicts** (Phase 4). Two segments
-  shared an accuracy and differed in verdict, because the verdict turns on
+  shared an accuracy and differed in verdict because the verdict turns on
   confident-but-wrong, which was not a column. Added.
+- **Three of six comprehension questions unanswerable** (Phase 5.5). Fixed in
+  copy and hierarchy; see `docs/comprehension-checkpoint.md`.
+- **Revalidation rendered as an arrow to itself** (Phase 6).
+- **Publishing a policy version created no audit event** (Phase 7).

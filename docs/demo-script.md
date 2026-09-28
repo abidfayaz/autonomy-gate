@@ -16,7 +16,7 @@ Two versions below: a **five-minute walkthrough** for a live conversation, and a
 > accurate* tells you nothing about whether any one of those jobs is safe to
 > loosen, because an average hides the parts it is bad at.
 >
-> Autonomy Gate scores each task separately, and each level of freedom has to be
+> Autonomy Gate evaluates each task separately, and each level of freedom has to be
 > earned with a different kind of proof. Here" — *Agents & Tasks* — "the same
 > agent holds four different levels at once. This one is paused because the
 > rulebook moved and the checker didn't. And this one had earned the top level,
@@ -105,8 +105,9 @@ Click **Change classification → Critical error**, then scroll up.
 > that error is in complex Australian cases while the routine ones are clean, so
 > it's arguing for a narrower fence rather than stopping the whole task.
 >
-> A model read the note and put it in a box. A person confirmed it. Then fixed
-> rules did the rest. The model never decided anything."
+> The classification layer puts the review note into a bounded category. A person
+> confirms anything consequential, and then fixed product rules determine what
+> happens next."
 
 *(Reset demo in the footer to undo.)*
 

@@ -12,6 +12,7 @@ import type {
   Task,
 } from "@/lib/domain/types";
 import { evaluateTask, REASON_CODES, type EvaluationInput } from "@/lib/engine";
+import { deriveDecisionOptions } from "@/lib/engine/decisionOptions";
 
 /**
  * Branch coverage over synthetic inputs.
@@ -406,19 +407,84 @@ describe("ceilings", () => {
   });
 });
 
-describe("escalation criterion", () => {
-  it("reports not applicable, rather than a pass, when nothing needed escalating", () => {
+describe("unmeasurable criteria", () => {
+  /** Every Assisted output reviewed and accepted, with nothing needing escalation. */
+  const reviewedWithoutEscalations = (count: number): HumanReview[] =>
+    Array.from({ length: count }, (_, index) => ({
+      review_id: `REV-${index}`,
+      run_id: `RUN-${index}`,
+      task_id: "test-task",
+      disposition: "accepted" as const,
+      changed_result: false,
+      reviewer: "Maya",
+      note: null,
+    }));
+
+  it("reports not applicable, and does not block, when nothing needed escalating", () => {
+    // The window gave no opportunity to observe escalation quality. That is
+    // honestly reported rather than failed, and the stage still passes.
     const result = evaluateTask(
-      makeInput({ current_level: "assisted" }, { count: 240, mode: "assisted", incorrect: 2 }),
+      makeInput(
+        { current_level: "assisted" },
+        { count: 240, mode: "assisted", incorrect: 2 },
+        { reviews: reviewedWithoutEscalations(240) },
+      ),
     );
     const escalation = result.criteria?.criteria.find(
       (criterion) => criterion.key === "correct-escalation",
     );
     expect(escalation?.passed).toBeNull();
     expect(escalation?.not_applicable_reason).toBe("No escalation cases");
-    // Not applicable does not block: a requirement with no opportunity to be
-    // tested is reported honestly rather than failed.
     expect(result.criteria?.satisfied).toBe(true);
+  });
+
+  it("fails, rather than excusing, a mandatory criterion whose evidence is absent", () => {
+    // Nobody reviewed anything at Assisted, so whether humans can rely on the
+    // recommendation is unproven. That is a failure, not a free pass.
+    const result = evaluateTask(
+      makeInput({ current_level: "assisted" }, { count: 240, mode: "assisted", incorrect: 2 }),
+    );
+    const override = result.criteria?.criteria.find(
+      (criterion) => criterion.key === "override-rate",
+    );
+    expect(override?.passed).toBe(false);
+    expect(override?.not_applicable_reason).toContain("unproven");
+    expect(result.criteria?.satisfied).toBe(false);
+  });
+
+  it("fails required sampling that never happened", () => {
+    // A policy demanding 10% of completed cases be sampled is not satisfied by
+    // sampling none of them.
+    const result = evaluateTask(
+      makeInput({}, { count: 320, mode: "supervised", incorrect: 2, sampled: 0 }),
+    );
+    const coverage = result.criteria?.criteria.find(
+      (criterion) => criterion.key === "sample-coverage",
+    );
+    expect(coverage?.passed).toBe(false);
+    expect(coverage?.not_applicable_reason).toContain("required sampling has not happened");
+    expect(result.recommendation.code).not.toBe(REASON_CODES.ELIGIBLE_FOR_NEXT_LEVEL);
+  });
+});
+
+describe("scope while the evidence cannot be trusted", () => {
+  it("offers narrowing, but proposes no segments of its own", () => {
+    // Reducing exposure is conservative and stays available. Proposing which
+    // segments to keep would derive a recommendation from the very evaluation
+    // the product has just declared untrustworthy.
+    const task = makeTask({ evaluator_rule_version: "0.9", approved_scope: null });
+    const result = evaluateTask(
+      makeInput({ evaluator_rule_version: "0.9" }, healthySupervised),
+    );
+    const options = deriveDecisionOptions(result, task);
+    const restrict = options.find((option) => option.action === "restrict-scope");
+
+    expect(result.recommendation.code).toBe(REASON_CODES.PAUSED_RULE_VERSION_MISMATCH);
+    expect(restrict).toBeDefined();
+    expect(restrict?.scope).toBeNull();
+    expect(restrict?.description).toContain("no segments are proposed");
+    // And promotion stays unavailable regardless.
+    expect(options.find((option) => option.action === "approve-next")).toBeUndefined();
   });
 });
 

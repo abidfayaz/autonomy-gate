@@ -43,6 +43,21 @@ export interface CriteriaReport {
   additional: CriterionResult[];
 }
 
+/**
+ * A criterion that cannot be measured.
+ *
+ * There are two quite different reasons for that, and conflating them would let
+ * a mandatory requirement quietly stop blocking:
+ *
+ *  - The window genuinely contained no opportunity to observe the thing. No case
+ *    called for escalation, so escalation quality cannot be judged. Reported as
+ *    not applicable, and does not block.
+ *  - The requirement was mandatory and the evidence is simply absent. A policy
+ *    demanding 10% of completed cases be sampled is not satisfied by sampling
+ *    none of them. That is a failure, and it blocks.
+ */
+type Measurability = "mandatory" | "observation-dependent";
+
 function check(
   key: string,
   label: string,
@@ -50,10 +65,12 @@ function check(
   requirement: number | undefined,
   comparator: Comparator,
   format: Format,
-  notApplicableReason?: string,
+  unmeasurableReason?: string,
+  measurability: Measurability = "mandatory",
 ): CriterionResult | null {
   if (requirement === undefined) return null;
   if (actual === null) {
+    const optional = measurability === "observation-dependent";
     return {
       key,
       label,
@@ -61,8 +78,10 @@ function check(
       requirement,
       comparator,
       format,
-      passed: null,
-      not_applicable_reason: notApplicableReason ?? "Not measurable in this window",
+      passed: optional ? null : false,
+      not_applicable_reason: optional
+        ? (unmeasurableReason ?? "No opportunity to observe this in the current window")
+        : (unmeasurableReason ?? "Required evidence for this criterion is absent"),
     };
   }
   const passed = comparator === "gte" ? actual >= requirement : actual <= requirement;
@@ -124,7 +143,7 @@ export function evaluateCriteria(
       stage.min_sample_coverage,
       "gte",
       "percent",
-      "No completed cases were sampled in this window",
+      "No completed cases were sampled, so the required sampling has not happened",
     ),
   );
 
@@ -136,7 +155,7 @@ export function evaluateCriteria(
       stage.max_sampled_error_rate,
       "lte",
       "percent",
-      "No completed cases were sampled in this window",
+      "No completed cases were sampled, so no post-execution review has taken place",
     ),
   );
 
@@ -181,7 +200,7 @@ export function evaluateCriteria(
       stage.max_override_rate,
       "lte",
       "percent",
-      "No reviewed cases in this window",
+      "No cases were reviewed, so reliance on the recommendation is unproven",
     ),
   );
 
@@ -194,6 +213,9 @@ export function evaluateCriteria(
       "gte",
       "percent",
       "No escalation cases",
+      // The only genuine no-opportunity case: nothing in the window required
+      // escalating, so escalation quality could not be observed either way.
+      "observation-dependent",
     ),
   );
 
@@ -246,9 +268,8 @@ export function evaluateCriteria(
     stage: stageKey,
     criteria,
     failed,
-    // A criterion with no opportunity to be measured is reported as not
-    // applicable and does not block. It is shown as such rather than as a pass,
-    // so an untested requirement never reads like a satisfied one.
+    // Only a criterion the window gave no opportunity to observe is excluded
+    // from `failed`. A mandatory requirement with absent evidence is a failure.
     satisfied: failed.length === 0,
     additional,
   };

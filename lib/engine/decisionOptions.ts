@@ -37,6 +37,22 @@ export interface DecisionOption {
   scope: ApprovedScope | null;
 }
 
+/**
+ * Outcomes where the evidence itself cannot be trusted.
+ *
+ * A stale evaluator, an unrevalidated configuration or an open blocking issue
+ * all mean the measurements are unreliable, not merely unfavourable. Narrowing
+ * scope stays available to a person, because reducing exposure is conservative
+ * whatever the evidence says. What must not happen is the product proposing
+ * *which* segments to keep, since that proposal would be derived from the very
+ * evaluation it has just declared untrustworthy.
+ */
+const EVIDENCE_UNTRUSTWORTHY = new Set<string>([
+  REASON_CODES.PAUSED_RULE_VERSION_MISMATCH,
+  REASON_CODES.SANDBOX_REVALIDATION_REQUIRED,
+  REASON_CODES.BLOCKED_OPEN_INCIDENT,
+]);
+
 const BLOCKED_CODES = new Set<string>([
   REASON_CODES.PAUSED_RULE_VERSION_MISMATCH,
   REASON_CODES.SANDBOX_REVALIDATION_REQUIRED,
@@ -107,19 +123,23 @@ export function deriveDecisionOptions(
 
   // Narrowing the fence is always available: it reduces exposure, so it needs no
   // eligibility gate. It keeps the level and changes only where it applies.
-  const narrowedScope =
-    result.recommendation.code === REASON_CODES.RESTRICT_SCOPE
+  const untrustworthy = EVIDENCE_UNTRUSTWORTHY.has(code);
+  const narrowedScope = untrustworthy
+    ? task.approved_scope
+    : code === REASON_CODES.RESTRICT_SCOPE
       ? result.recommendation.recommended_scope
       : scopeFromCleanSegments(result);
 
-  if (narrowedScope) {
+  if (narrowedScope || untrustworthy) {
     const recommended = code === REASON_CODES.RESTRICT_SCOPE;
     options.push({
       action: "restrict-scope",
       label: "Restrict scope",
-      description: recommended
-        ? "Keep the current level but narrow where it applies, so the weaker segments fall outside it."
-        : "Keep the current level and narrow where it applies, reducing exposure while the task is reassessed.",
+      description: untrustworthy
+        ? "Narrow where this level applies, to reduce exposure while the blocking condition is resolved. The current evaluation cannot be trusted, so no segments are proposed: the narrower scope is yours to choose."
+        : recommended
+          ? "Keep the current level but narrow where it applies, so the weaker segments fall outside it."
+          : "Keep the current level and narrow where it applies, reducing exposure while the task is reassessed.",
       resulting_level: current,
       outcome: "scope-restricted",
       recommended,
