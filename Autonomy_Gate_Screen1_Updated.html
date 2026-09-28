@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"background":"#0f131c","on-surface":"#dfe2ee","on-primary":"#1000a9","on-secondary":"#00344d","tertiary-fixed":"#6ffbbe","tertiary-container":"#00885d","on-primary-container":"#0d0096","primary-fixed-dim":"#c0c1ff","surface-container-highest":"#31353e","surface-container-high":"#262a33","error":"#ffb4ab","secondary":"#89ceff","primary":"#c0c1ff","on-primary-fixed-variant":"#2f2ebe","on-secondary-fixed-variant":"#004c6e","surface-container":"#1c2028","on-tertiary-fixed":"#002113","on-error":"#690005","inverse-surface":"#dfe2ee","inverse-primary":"#494bd6","surface-container-low":"#181c24","on-secondary-container":"#00344e","tertiary-fixed-dim":"#4edea3","inverse-on-surface":"#2c3039","on-error-container":"#ffdad6","tertiary":"#4edea3","secondary-container":"#00a2e6","secondary-fixed-dim":"#89ceff","on-background":"#dfe2ee","surface-bright":"#353942","on-tertiary":"#003824","on-surface-variant":"#c7c4d7","surface":"#0f131c","on-tertiary-container":"#000703","on-tertiary-fixed-variant":"#005236","surface-tint":"#c0c1ff","surface-container-lowest":"#0a0e16","primary-fixed":"#e1e0ff","surface-variant":"#31353e","outline-variant":"#464554","primary-container":"#8083ff","outline":"#908fa0","secondary-fixed":"#c9e6ff","surface-dim":"#0f131c","on-secondary-fixed":"#001e2f","error-container":"#93000a","on-primary-fixed":"#07006c"},borderRadius:{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},spacing:{"space-lg":"1.5rem","space-xs":"0.25rem","margin-desktop":"2rem","margin":"1rem","gutter-desktop":"1.5rem","space-md":"1rem","space-sm":"0.5rem","gutter":"1rem","space-xl":"2rem"},fontFamily:{"label-sm":["JetBrains Mono"],"body-md":["Inter"],"headline-sm":["Inter"],"body-sm":["Inter"],"headline-xl":["Inter"],"headline-lg":["Inter"],"code-sm":["JetBrains Mono"],"body-lg":["Inter"],"label-md":["JetBrains Mono"]},fontSize:{"label-sm":["0.6875rem",{lineHeight:"0.875rem",letterSpacing:"0.03em",fontWeight:"500"}],"body-md":["0.875rem",{lineHeight:"1.25rem",letterSpacing:"0",fontWeight:"400"}],"headline-sm":["1.125rem",{lineHeight:"1.5rem",letterSpacing:"-0.01em",fontWeight:"600"}],"body-sm":["0.75rem",{lineHeight:"1rem",letterSpacing:"0.01em",fontWeight:"400"}],"headline-xl":["2rem",{lineHeight:"2.5rem",letterSpacing:"-0.02em",fontWeight:"600"}],"headline-lg":["1.5rem",{lineHeight:"2rem",letterSpacing:"-0.015em",fontWeight:"600"}],"code-sm":["0.8125rem",{lineHeight:"1.125rem",letterSpacing:"0",fontWeight:"400"}],"body-lg":["1rem",{lineHeight:"1.5rem",letterSpacing:"0",fontWeight:"400"}],"label-md":["0.75rem",{lineHeight:"1rem",letterSpacing:"0.02em",fontWeight:"500"}]}}}};</script></head><body class="bg-background font-body-md text-on-surface antialiased min-h-screen flex flex-col"><header class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-md border-b border-outline-variant/40"><div class="h-16 max-w-7xl mx-auto px-margin-desktop flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md min-w-max"><div class="flex items-center justify-center w-8 h-8 rounded bg-surface-container-high border border-outline-variant/50 text-primary"><span class="material-symbols-outlined text-[20px]">verified_user</span></div><div class="flex flex-col"><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm text-on-surface font-semibold tracking-tight">Autonomy Gate</span><span class="px-1.5 py-0.5 rounded font-label-sm text-label-sm uppercase bg-surface-container border border-outline-variant/40 text-on-surface-variant">v1.4</span></div><span class="font-body-sm text-body-sm text-on-surface-variant hidden lg:inline">Evidence-based autonomy for AI tasks</span></div></div><nav class="hidden md:flex items-center p-1 rounded bg-surface-container-lowest border border-outline-variant/30 gap-1" data-active-classes="bg-surface-container-high text-on-surface font-medium border border-outline-variant/60 shadow-inner"><a class="px-3 py-1.5 rounded font-body-md text-body-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" data-path="agents-tasks" href="#">Agents &amp; Tasks</a><a class="px-3 py-1.5 rounded font-body-md text-body-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" data-path="policies-versions" href="#">Policies &amp; Versions</a><a class="px-3 py-1.5 rounded font-body-md text-body-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" data-path="sandbox-revalidation" href="#">Sandbox Revalidation</a><a class="px-3 py-1.5 rounded font-body-md text-body-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" data-path="audit-log" href="#">Audit Log</a></nav><div class="flex items-center gap-space-sm min-w-max"><div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-surface-container-low border border-outline-variant/30"><span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span><span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Prototype</span></div><div class="flex items-center gap-2 pl-2 py-1 pr-2 rounded bg-surface-container-low border border-outline-variant/30"><div class="w-7 h-7 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[16px]">person</span></div><div class="hidden xl:flex flex-col text-left"><span class="font-body-sm text-body-sm text-on-surface font-medium leading-none">Maya</span><span class="font-label-sm text-label-sm text-on-surface-variant leading-none mt-1">AI Ops &amp; Governance</span></div></div></div></div></header><main class="w-full pt-16 flex-1 bg-background max-w-7xl mx-auto px-margin-desktop"><div class="flex flex-col w-full pb-16">
+<!-- Top Workspace Context & Filter Header -->
+<section class="flex flex-col md:flex-row md:items-end justify-between gap-space-md py-space-lg">
+<div class="flex flex-col gap-space-xs max-w-2xl">
+<div class="flex items-center gap-space-sm">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline px-2 py-0.5 rounded bg-surface-container-low border border-outline-variant/30">Governance Domain: Financial Accounting</span>
+<div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-surface-container border border-outline-variant/30 text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px] text-secondary">info</span>
+<span>Synthetic prototype data</span>
+</div>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight font-semibold mt-1">AI Agents</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+        Autonomy is evaluated separately for each task. A task can earn more freedom only when its evidence, risk and current rules support it.
+      </p>
+</div>
+<!-- Quick Ledger Filter Controls -->
+<div class="flex items-center gap-space-sm self-start md:self-auto shrink-0">
+<div class="inline-flex items-center rounded bg-surface-container-lowest border border-outline-variant/40 p-1">
+<button class="px-3 py-1 text-on-surface font-label-sm text-label-sm rounded bg-surface-container-high border border-outline-variant/50" type="button">All Tasks (8)</button>
+<button class="px-3 py-1 text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm transition-colors" type="button">Needs Review (1)</button>
+<button class="px-3 py-1 text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm transition-colors" type="button">Sandbox (1)</button>
+</div>
+<button class="flex items-center gap-1.5 px-3 py-1.5 bg-surface-container-high hover:bg-surface-container-highest text-on-surface border border-outline-variant/40 rounded font-label-sm text-label-sm transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">tune</span>
+<span>Filter</span>
+</button>
+</div>
+</section>
+<!-- Metric Architecture Ledger -->
+<section class="grid grid-cols-2 lg:grid-cols-4 gap-space-md mb-space-xl">
+<!-- Metric 1 -->
+<div class="flex flex-col p-space-md rounded bg-surface-container-low border border-outline-variant/30 hover:border-outline-variant/60 transition-colors">
+<div class="flex items-center justify-between text-outline-variant">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">AI Agents</span>
+<span class="material-symbols-outlined text-[18px]">smart_toy</span>
+</div>
+<div class="flex items-baseline gap-2 mt-2">
+<span class="font-headline-lg text-headline-lg font-semibold text-on-surface">2</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">AI Agents</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-1">Active agents in this prototype</span>
+</div>
+<!-- Metric 2 -->
+<div class="flex flex-col p-space-md rounded bg-surface-container-low border border-outline-variant/30 hover:border-outline-variant/60 transition-colors">
+<div class="flex items-center justify-between text-outline-variant">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Tasks</span>
+<span class="material-symbols-outlined text-[18px]">account_tree</span>
+</div>
+<div class="flex items-baseline gap-2 mt-2">
+<span class="font-headline-lg text-headline-lg font-semibold text-on-surface">8</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Tasks</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-1">Evaluated separately</span>
+</div>
+<!-- Metric 3 -->
+<div class="flex flex-col p-space-md rounded bg-surface-container-low border border-outline-variant/40 hover:border-outline-variant/70 transition-colors bg-gradient-to-br from-surface-container-low via-surface-container-low to-error-container/10">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Needs Attention</span>
+<span class="inline-flex w-2 h-2 rounded-full bg-error"></span>
+</div>
+<div class="flex items-baseline gap-2 mt-2">
+<span class="font-headline-lg text-headline-lg font-semibold text-error">1</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Review Needed</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-1">1 task requires review</span>
+</div>
+<!-- Metric 4 -->
+<div class="flex flex-col p-space-md rounded bg-surface-container-low border border-outline-variant/40 hover:border-outline-variant/70 transition-colors bg-gradient-to-br from-surface-container-low via-surface-container-low to-secondary-container/10">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Sandbox Validations</span>
+<span class="material-symbols-outlined text-[18px] text-secondary">science</span>
+</div>
+<div class="flex items-baseline gap-2 mt-2">
+<span class="font-headline-lg text-headline-lg font-semibold text-secondary">1</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Sandbox Validation</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-1">1 task being revalidated</span>
+</div>
+</section>
+<!-- Core Audit Grid: 2 Primary Agent Cards -->
+<section class="flex flex-col gap-space-xl">
+<!-- AGENT CARD 1: INVOICE HELPER -->
+<div class="flex flex-col rounded-lg bg-surface-container-low border border-outline-variant/35 overflow-hidden">
+<!-- Agent Metadata Strip -->
+<div class="px-space-md md:px-space-lg py-space-md bg-surface-container border-b border-outline-variant/30 flex flex-col md:flex-row md:items-center justify-between gap-space-md">
+<div class="flex items-start md:items-center gap-space-md">
+<div class="w-12 h-12 rounded bg-surface-container-high border border-outline-variant/40 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[26px] text-secondary">receipt_long</span>
+</div>
+<div class="flex flex-col">
+<div class="flex flex-wrap items-center gap-space-xs">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">Invoice Helper</span>
+<span class="font-label-sm text-label-sm text-outline-variant">//</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">AGENT_ID: AGT-INV-004</span>
+
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+              Reads invoices, organizes them, matches transactions, and flags exceptions.
+            </p>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-space-md justify-between md:justify-end">
+<div class="flex flex-col items-start md:items-end">
+<span class="font-label-sm text-label-sm text-on-surface-variant">4 tasks • 3 healthy • 1 needs review</span>
+</div>
+</div>
+</div>
+<!-- Agent 1 Sub-Ledger Table -->
+<div class="w-full overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-lowest/70 border-b border-outline-variant/30 text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider h-9">
+<th class="py-2 px-space-md md:px-space-lg font-medium">Task</th>
+<th class="py-2 px-space-md font-medium">Autonomy Level</th>
+<th class="py-2 px-space-md font-medium">Operational Status</th>
+<th class="py-2 px-space-md font-medium text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/20 font-body-sm text-body-sm">
+<!-- Row 1.1 -->
+<tr class="hover:bg-surface-container/50 transition-colors group cursor-pointer" onclick="window.location.href='#view-scorecard-inv-1'">
+<td class="py-3 px-space-md md:px-space-lg">
+<div class="flex flex-col">
+<span class="font-body-md text-body-md text-on-surface font-medium group-hover:text-primary transition-colors">Read invoice fields</span>
+<span class="font-label-sm text-label-sm text-outline">Reads vendor, date, invoice number and amounts.</span>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<div class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-primary-container/20 border border-primary/40 text-primary font-label-sm text-label-sm uppercase">
+<span>L4 · Constrained</span>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-tertiary-container/20 border border-tertiary/30 text-tertiary font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+<span>Healthy</span>
+</div>
+</td>
+<td class="py-3 px-space-md text-right">
+<a class="inline-flex items-center gap-1 font-label-sm text-label-sm text-on-surface-variant group-hover:text-on-surface hover:underline" href="#view-scorecard">
+<span>View scorecard</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</td>
+</tr>
+<!-- Row 1.2 -->
+<tr class="hover:bg-surface-container/50 transition-colors group cursor-pointer" onclick="window.location.href='#view-scorecard-inv-2'">
+<td class="py-3 px-space-md md:px-space-lg">
+<div class="flex flex-col">
+<span class="font-body-md text-body-md text-on-surface font-medium group-hover:text-primary transition-colors">Classify expense</span>
+<span class="font-label-sm text-label-sm text-outline">Suggests the appropriate expense category.</span>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<div class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-surface-container-high border border-outline-variant/60 text-secondary font-label-sm text-label-sm uppercase">
+<span>L3 · Supervised</span>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-tertiary-container/20 border border-tertiary/30 text-tertiary font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+<span>Healthy</span>
+</div>
+</td>
+<td class="py-3 px-space-md text-right">
+<a class="inline-flex items-center gap-1 font-label-sm text-label-sm text-on-surface-variant group-hover:text-on-surface hover:underline" href="#view-scorecard">
+<span>View scorecard</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</td>
+</tr>
+<!-- Row 1.3 -->
+<tr class="hover:bg-surface-container/50 transition-colors group cursor-pointer" onclick="window.location.href='#view-scorecard-inv-3'">
+<td class="py-3 px-space-md md:px-space-lg">
+<div class="flex flex-col">
+<span class="font-body-md text-body-md text-on-surface font-medium group-hover:text-primary transition-colors">Match invoice to ledger</span>
+<span class="font-label-sm text-label-sm text-outline">Finds the corresponding recorded transaction.</span>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<div class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-primary-container/20 border border-primary/40 text-primary font-label-sm text-label-sm uppercase">
+<span>L4 · Constrained</span>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-tertiary-container/20 border border-tertiary/30 text-tertiary font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+<span>Healthy</span>
+</div>
+</td>
+<td class="py-3 px-space-md text-right">
+<a class="inline-flex items-center gap-1 font-label-sm text-label-sm text-on-surface-variant group-hover:text-on-surface hover:underline" href="#view-scorecard">
+<span>View scorecard</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</td>
+</tr>
+<!-- Row 1.4 (Issue Flagged) -->
+<tr class="bg-surface-container-low hover:bg-surface-container transition-colors group cursor-pointer" onclick="window.location.href='#view-scorecard-inv-4'">
+<td class="py-3.5 px-space-md md:px-space-lg">
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-body-md text-body-md text-on-surface font-medium group-hover:text-primary transition-colors">Detect invoice exceptions</span>
+<span class="px-1.5 py-0.2 rounded font-label-sm text-label-sm bg-error-container/30 border border-error/40 text-error">Variance flag</span>
+</div>
+<span class="font-label-sm text-label-sm text-error/90 mt-0.5">Flags duplicates, mismatches and unusual invoices.</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-surface-container border border-tertiary/30 text-tertiary-fixed font-label-sm text-label-sm uppercase">
+<span>L2 · Assisted</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-error-container/20 border border-error/40 text-error font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+<span>Needs Review</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-right">
+<a class="inline-flex items-center gap-1 font-label-sm text-label-sm text-error hover:text-on-surface hover:underline" href="#view-scorecard">
+<span>View scorecard</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- AGENT CARD 2: TAX HELPER -->
+<div class="flex flex-col rounded-lg bg-surface-container-low border border-outline-variant/35 overflow-hidden">
+<!-- Agent Metadata Strip -->
+<div class="px-space-md md:px-space-lg py-space-md bg-surface-container border-b border-outline-variant/30 flex flex-col md:flex-row md:items-center justify-between gap-space-md">
+<div class="flex items-start md:items-center gap-space-md">
+<div class="w-12 h-12 rounded bg-surface-container-high border border-outline-variant/40 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[26px] text-primary">calculate</span>
+</div>
+<div class="flex flex-col">
+<div class="flex flex-wrap items-center gap-space-xs">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">Tax Helper</span>
+<span class="font-label-sm text-label-sm text-outline-variant">//</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">AGENT_ID: AGT-TAX-009</span>
+
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+              Applies routine tax rules, identifies risk, drafts treatments, and checks filing readiness.
+            </p>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-space-md justify-between md:justify-end">
+<div class="flex flex-col items-start md:items-end">
+<span class="font-label-sm text-label-sm text-on-surface-variant">4 tasks • 2 healthy • 1 needs review • 1 in sandbox</span>
+</div>
+</div>
+</div>
+<!-- Agent 2 Sub-Ledger Table -->
+<div class="w-full overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-lowest/70 border-b border-outline-variant/30 text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider h-9">
+<th class="py-2 px-space-md md:px-space-lg font-medium">Task</th>
+<th class="py-2 px-space-md font-medium">Autonomy Level</th>
+<th class="py-2 px-space-md font-medium">Operational Status</th>
+<th class="py-2 px-space-md font-medium text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/20 font-body-sm text-body-sm">
+<!-- Row 2.1 -->
+<tr class="hover:bg-surface-container/50 transition-colors group cursor-pointer" onclick="window.location.href='#view-scorecard-tax-1'">
+<td class="py-3 px-space-md md:px-space-lg">
+<div class="flex flex-col">
+<span class="font-body-md text-body-md text-on-surface font-medium group-hover:text-primary transition-colors">Routine rule application</span>
+<span class="font-label-sm text-label-sm text-outline">Applies routine rules using the current approved rule set.</span>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<div class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-surface-container-high border border-outline-variant/60 text-secondary font-label-sm text-label-sm uppercase">
+<span>L3 · Supervised</span>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-tertiary-container/20 border border-tertiary/30 text-tertiary font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+<span>Healthy</span>
+</div>
+</td>
+<td class="py-3 px-space-md text-right">
+<a class="inline-flex items-center gap-1 font-label-sm text-label-sm text-on-surface-variant group-hover:text-on-surface hover:underline" href="#view-scorecard">
+<span>View scorecard</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</td>
+</tr>
+<!-- Row 2.2 -->
+<tr class="hover:bg-surface-container/50 transition-colors group cursor-pointer" onclick="window.location.href='#view-scorecard-tax-2'">
+<td class="py-3 px-space-md md:px-space-lg">
+<div class="flex flex-col">
+<span class="font-body-md text-body-md text-on-surface font-medium group-hover:text-primary transition-colors">Risk detection</span>
+<span class="font-label-sm text-label-sm text-outline">Identifies routine, medium-risk and high-risk cases.</span>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<div class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-surface-container-high border border-outline-variant/60 text-secondary font-label-sm text-label-sm uppercase">
+<span>L3 · Supervised</span>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-tertiary-container/20 border border-tertiary/30 text-tertiary font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+<span>Healthy</span>
+</div>
+</td>
+<td class="py-3 px-space-md text-right">
+<a class="inline-flex items-center gap-1 font-label-sm text-label-sm text-on-surface-variant group-hover:text-on-surface hover:underline" href="#view-scorecard">
+<span>View scorecard</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</td>
+</tr>
+<!-- Row 2.3 (Version Mismatch) -->
+<tr class="bg-surface-container-low hover:bg-surface-container transition-colors group cursor-pointer" onclick="window.location.href='#view-scorecard-tax-3'">
+<td class="py-3.5 px-space-md md:px-space-lg">
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-body-md text-body-md text-on-surface font-medium group-hover:text-primary transition-colors">Draft tax position</span>
+
+</div>
+<span class="font-label-sm text-label-sm text-error/90 mt-0.5">Rule-version mismatch detected. Evaluation for this task is paused.</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-surface-container border border-tertiary/30 text-tertiary-fixed font-label-sm text-label-sm uppercase">
+<span>L2 · Assisted</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-error-container/20 border border-error/40 text-error font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+<span>Needs Review</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-right">
+<a class="inline-flex items-center gap-1 font-label-sm text-label-sm text-error hover:text-on-surface hover:underline" href="#view-scorecard">
+<span>View scorecard</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</td>
+</tr>
+<!-- Row 2.4 (Sandbox Validation) -->
+<tr class="hover:bg-surface-container/50 transition-colors group cursor-pointer" onclick="window.location.href='#view-scorecard-tax-4'">
+<td class="py-3.5 px-space-md md:px-space-lg">
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-body-md text-body-md text-on-surface font-medium group-hover:text-primary transition-colors">Filing readiness</span>
+<span class="px-1.5 py-0.2 rounded font-label-sm text-label-sm bg-secondary-container/20 border border-secondary/40 text-secondary">Candidate configuration under validation</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline mt-0.5">Checks whether required evidence and review steps are complete.</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-surface-container-highest border border-outline-variant/40 text-on-surface-variant font-label-sm text-label-sm uppercase">
+<span>L1 · Shadow</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-secondary-container/15 border border-secondary/40 text-secondary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[13px] text-secondary">sensors</span>
+<span>Sandbox validation</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-right">
+<a class="inline-flex items-center gap-1 font-label-sm text-label-sm text-on-surface-variant group-hover:text-on-surface hover:underline" href="#view-scorecard">
+<span>View scorecard</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- Incident Notice Banner -->
+<section class="mt-space-lg">
+<div class="rounded-lg p-space-md md:p-space-lg bg-surface-container border border-error/30 flex flex-col md:flex-row md:items-center justify-between gap-space-md">
+<div class="flex items-start gap-space-md">
+<div class="w-10 h-10 rounded bg-error-container/30 border border-error/50 flex items-center justify-center shrink-0 mt-0.5 md:mt-0">
+<span class="material-symbols-outlined text-[22px] text-error">gavel</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm text-on-surface font-medium">1 policy issue requires attention</span>
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-error-container/20 text-error border border-error/30 uppercase">Evaluation Paused</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 leading-normal max-w-3xl">
+            Tax Helper's <span class="font-label-sm text-on-surface">Draft tax position</span> task is using a different rule version from the evaluator. Evaluation for this task is paused until the versions are aligned.
+          </p>
+</div>
+</div>
+<div class="shrink-0 flex items-center gap-space-sm">
+<button class="px-4 py-2 rounded bg-surface-container-high hover:bg-surface-container-highest border border-outline-variant/60 text-on-surface font-body-sm text-body-sm font-medium transition-colors flex items-center gap-2" type="button">
+<span>Review issue</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Sandbox Isolation Ledger Panel -->
+<section class="mt-space-lg">
+<div class="rounded-lg bg-surface-container-low border border-outline-variant/30 p-space-md md:p-space-lg">
+<div class="flex flex-col md:flex-row md:items-start justify-between gap-space-md border-b border-outline-variant/30 pb-space-md">
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-secondary">science</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">Sandbox Revalidation</span>
+<span class="px-2 py-0.5 rounded font-label-sm text-label-sm bg-secondary-container/20 border border-secondary/30 text-secondary">Pipeline Active</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 max-w-2xl">
+            Candidate configurations must earn autonomy again after a material change. Previous autonomy does not automatically transfer to a changed model, rule, prompt, or task definition.
+          </p>
+</div>
+<div class="flex items-center gap-2">
+<button class="px-3.5 py-1.5 rounded bg-surface-container-high hover:bg-surface-container-highest border border-outline-variant/50 text-on-surface font-label-sm text-label-sm transition-colors flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[16px]">history</span>
+<span>Test Suite Logs</span>
+</button>
+<button class="px-3.5 py-1.5 rounded bg-primary hover:bg-primary-fixed-dim text-on-primary font-label-sm text-label-sm font-medium transition-colors flex items-center gap-1.5" type="button">
+<span>View sandbox</span>
+<span class="material-symbols-outlined text-[16px]">open_in_new</span>
+</button>
+</div>
+</div>
+<!-- Sandbox Progress Matrix -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-space-md pt-space-md">
+<!-- Target Task -->
+<div class="flex flex-col p-space-sm bg-surface-container rounded border border-outline-variant/20">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Candidate Scope</span>
+<span class="font-body-md text-body-md font-semibold text-on-surface mt-1">Tax Helper</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Task: Filing readiness</span>
+</div>
+<!-- Prior State -->
+<div class="flex flex-col p-space-sm bg-surface-container rounded border border-outline-variant/20">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Previous Approved Level</span>
+<div class="mt-1">
+<span class="inline-flex px-2 py-0.5 rounded font-label-sm text-label-sm bg-surface-container-highest border border-tertiary/40 text-tertiary-fixed">
+              L2 · Assisted
+            </span>
+</div>
+<span class="font-label-sm text-label-sm text-outline mt-1">Previously approved in production</span>
+</div>
+<!-- Testing Target -->
+<div class="flex flex-col p-space-sm bg-surface-container rounded border border-outline-variant/20">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Candidate Status</span>
+<div class="mt-1">
+<span class="inline-flex px-2 py-0.5 rounded font-label-sm text-label-sm bg-secondary-container/20 border border-secondary/40 text-secondary">
+              L1 · Shadow Validation
+            </span>
+</div>
+<span class="font-label-sm text-label-sm text-outline mt-1">Revalidating before autonomy can continue</span>
+</div>
+<!-- Metric Sampling Progress -->
+<div class="flex flex-col p-space-sm bg-surface-container rounded border border-outline-variant/20">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Validation Progress</span>
+<span class="font-label-sm text-label-sm text-secondary font-semibold">71%</span>
+</div>
+<div class="w-full h-1.5 rounded-full bg-surface-container-highest mt-2 overflow-hidden">
+<div class="h-full bg-secondary rounded-full" style="width: 71%;"></div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-1.5 font-mono">142 of 200 cases evaluated</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Governance Architecture Footnote & Tier Key -->
+<section class="mt-space-xl pt-space-lg border-t border-outline-variant/30">
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline font-semibold">Autonomy Levels</span>
+
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-space-md mt-1">
+<!-- Level 1 -->
+<div class="flex flex-col p-space-sm rounded bg-surface-container-lowest border border-outline-variant/20">
+<div class="flex items-center gap-1.5">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface-variant px-1.5 py-0.5 rounded bg-surface-container-high">L1</span>
+<span class="font-body-sm text-body-sm font-medium text-on-surface">Shadow</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-2 leading-relaxed">
+            AI performs the task for evaluation. Humans review everything.
+          </p>
+</div>
+<!-- Level 2 -->
+<div class="flex flex-col p-space-sm rounded bg-surface-container-lowest border border-outline-variant/20">
+<div class="flex items-center gap-1.5">
+<span class="font-label-sm text-label-sm font-semibold text-tertiary px-1.5 py-0.5 rounded bg-surface-container-high border border-tertiary/30">L2</span>
+<span class="font-body-sm text-body-sm font-medium text-on-surface">Assisted</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-2 leading-relaxed">
+            AI handles selected low-risk cases. Humans review the rest.
+          </p>
+</div>
+<!-- Level 3 -->
+<div class="flex flex-col p-space-sm rounded bg-surface-container-lowest border border-outline-variant/20">
+<div class="flex items-center gap-1.5">
+<span class="font-label-sm text-label-sm font-semibold text-secondary px-1.5 py-0.5 rounded bg-surface-container-high border border-secondary/30">L3</span>
+<span class="font-body-sm text-body-sm font-medium text-on-surface">Supervised</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-2 leading-relaxed">
+            AI handles most routine cases. Humans monitor exceptions and samples.
+          </p>
+</div>
+<!-- Level 4 -->
+<div class="flex flex-col p-space-sm rounded bg-surface-container-lowest border border-outline-variant/20">
+<div class="flex items-center gap-1.5">
+<span class="font-label-sm text-label-sm font-semibold text-primary px-1.5 py-0.5 rounded bg-surface-container-high border border-primary/30">L4</span>
+<span class="font-body-sm text-body-sm font-medium text-on-surface">Constrained</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-2 leading-relaxed">
+            AI works independently within clearly approved boundaries.
+          </p>
+</div>
+</div>
+</div>
+</section>
+</div></main><footer class="w-full bg-surface-container-lowest border-t border-outline-variant/30 mt-auto"><div class="max-w-7xl mx-auto px-margin-desktop py-space-md flex flex-col md:flex-row items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm font-label-sm text-label-sm text-on-surface-variant"><span>TASK-LEVEL AUTONOMY GOVERNANCE</span><span class="text-outline-variant">//</span><span>SYNTHETIC PROTOTYPE DATA</span></div><div class="font-label-sm text-label-sm text-on-surface-variant">Autonomy Gate • Prototype</div></div></footer></body></html>

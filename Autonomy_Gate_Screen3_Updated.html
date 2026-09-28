@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"secondary":"#89ceff","secondary-fixed-dim":"#89ceff","on-secondary-container":"#00344e","on-error":"#690005","on-tertiary":"#003824","surface-tint":"#c0c1ff","primary-container":"#8083ff","on-tertiary-container":"#000703","on-primary-fixed":"#07006c","error-container":"#93000a","on-secondary-fixed":"#001e2f","background":"#0f131c","surface-variant":"#31353e","on-surface":"#dfe2ee","inverse-on-surface":"#2c3039","on-primary":"#1000a9","error":"#ffb4ab","inverse-primary":"#494bd6","inverse-surface":"#dfe2ee","tertiary-fixed":"#6ffbbe","surface-container-high":"#262a33","on-error-container":"#ffdad6","on-secondary-fixed-variant":"#004c6e","on-secondary":"#00344d","on-surface-variant":"#c7c4d7","secondary-fixed":"#c9e6ff","outline":"#908fa0","on-tertiary-fixed-variant":"#005236","tertiary-container":"#00885d","on-primary-fixed-variant":"#2f2ebe","tertiary":"#4edea3","surface-bright":"#353942","primary":"#c0c1ff","on-background":"#dfe2ee","primary-fixed":"#e1e0ff","on-primary-container":"#0d0096","surface-dim":"#0f131c","on-tertiary-fixed":"#002113","surface-container-highest":"#31353e","surface-container-lowest":"#0a0e16","tertiary-fixed-dim":"#4edea3","surface-container-low":"#181c24","primary-fixed-dim":"#c0c1ff","surface-container":"#1c2028","surface":"#0f131c","outline-variant":"#464554","secondary-container":"#00a2e6"},borderRadius:{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},spacing:{"margin-desktop":"2rem","gutter":"1rem","space-xs":"0.25rem","space-sm":"0.5rem","margin":"1rem","space-xl":"2rem","gutter-desktop":"1.5rem","space-lg":"1.5rem","space-md":"1rem"},fontFamily:{"body-lg":["Inter"],"headline-xl":["Inter"],"label-sm":["JetBrains Mono"],"headline-sm":["Inter"],"body-md":["Inter"],"body-sm":["Inter"],"label-md":["JetBrains Mono"],"headline-lg":["Inter"],"code-sm":["JetBrains Mono"]},fontSize:{"body-lg":["1rem",{lineHeight:"1.5rem",letterSpacing:"0",fontWeight:"400"}],"headline-xl":["2rem",{lineHeight:"2.5rem",letterSpacing:"-0.02em",fontWeight:"600"}],"label-sm":["0.6875rem",{lineHeight:"0.875rem",letterSpacing:"0.03em",fontWeight:"500"}],"headline-sm":["1.125rem",{lineHeight:"1.5rem",letterSpacing:"-0.01em",fontWeight:"600"}],"body-md":["0.875rem",{lineHeight:"1.25rem",letterSpacing:"0",fontWeight:"400"}],"body-sm":["0.75rem",{lineHeight:"1rem",letterSpacing:"0.01em",fontWeight:"400"}],"label-md":["0.75rem",{lineHeight:"1rem",letterSpacing:"0.02em",fontWeight:"500"}],"headline-lg":["1.5rem",{lineHeight:"2rem",letterSpacing:"-0.015em",fontWeight:"600"}],"code-sm":["0.8125rem",{lineHeight:"1.125rem",letterSpacing:"0",fontWeight:"400"}]}}}};</script></head><body class="bg-background font-body-md text-on-surface antialiased min-h-screen flex flex-col"><header class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-md border-b border-outline-variant/40"><div class="h-16 max-w-7xl mx-auto px-margin-desktop flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md min-w-max"><div class="flex items-center justify-center w-8 h-8 rounded bg-surface-container-high border border-outline-variant/50 text-primary"><span class="material-symbols-outlined text-[20px]">verified_user</span></div><div class="flex flex-col"><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm text-on-surface font-semibold tracking-tight">Autonomy Gate</span><span class="px-1.5 py-0.5 rounded font-label-sm text-label-sm uppercase bg-surface-container border border-outline-variant/40 text-on-surface-variant">v1.4</span></div><span class="font-body-sm text-body-sm text-on-surface-variant hidden lg:inline">Evidence-based autonomy for AI tasks</span></div></div><nav class="hidden md:flex items-center p-1 rounded bg-surface-container-lowest border border-outline-variant/30 gap-1" data-active-classes="bg-surface-container-high text-on-surface font-medium border border-outline-variant/60 shadow-inner"><a class="px-3 py-1.5 rounded font-body-md text-body-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" data-path="agents-tasks" href="#">Agents &amp; Tasks</a><a class="px-3 py-1.5 rounded font-body-md text-body-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" data-path="policies-versions" href="#">Policies &amp; Versions</a><a class="px-3 py-1.5 rounded font-body-md text-body-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" data-path="sandbox-revalidation" href="#">Sandbox Revalidation</a><a class="px-3 py-1.5 rounded font-body-md text-body-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" data-path="audit-log" href="#">Audit Log</a></nav><div class="flex items-center gap-space-sm min-w-max"><div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-surface-container-low border border-outline-variant/30"><span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span><span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Prototype</span></div><div class="flex items-center gap-2 pl-2 py-1 pr-2 rounded bg-surface-container-low border border-outline-variant/30"><div class="w-7 h-7 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[16px]">person</span></div><div class="hidden xl:flex flex-col text-left"><span class="font-body-sm text-body-sm text-on-surface font-medium leading-none">Maya</span><span class="font-label-sm text-label-sm text-on-surface-variant leading-none mt-1">AI Ops &amp; Governance</span></div></div></div></div></header><main class="w-full pt-16 flex-1 bg-background max-w-7xl mx-auto px-margin-desktop"><div class="flex flex-col w-full py-space-md space-y-space-lg">
+<!-- Breadcrumb and Metadata Header -->
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center gap-space-xs font-label-sm text-label-sm text-on-surface-variant flex-wrap">
+<a class="hover:text-on-surface transition-colors" href="#">Agents &amp; Tasks</a>
+<span class="text-outline-variant">/</span>
+<a class="hover:text-on-surface transition-colors" href="#">Tax Helper</a>
+<span class="text-outline-variant">/</span>
+<a class="hover:text-on-surface transition-colors" href="#">Routine rule application</a>
+<span class="text-outline-variant">/</span>
+<span class="text-on-surface font-medium">Autonomy decision</span>
+</div>
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md pt-space-xs">
+<div class="space-y-1">
+<div class="flex items-center gap-space-sm flex-wrap">
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Review autonomy decision</h1>
+<span class="px-2 py-0.5 rounded font-label-sm text-label-sm bg-surface-container-high text-on-surface-variant">Synthetic prototype data</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-3xl">
+          Review the recommendation, scope, and supporting evidence before recording the final human decision.
+        </p>
+</div>
+
+</div>
+</div>
+<!-- First Row — Primary Decision Summary (3 side-by-side cards) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<!-- Card 1: Current autonomy -->
+<div class="bg-surface-container-low p-space-md rounded flex flex-col justify-between space-y-space-md shadow-sm">
+<div class="space-y-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Current autonomy</span>
+<span class="px-2 py-0.5 rounded font-label-sm text-label-sm bg-surface-container-highest text-secondary font-medium">L3 · Supervised</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface">
+          AI handles most routine cases. Humans monitor exceptions and samples.
+        </p>
+</div>
+<div class="flex items-center gap-2 pt-space-sm bg-surface-container-lowest/50 p-2 rounded">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Operational State: <span class="text-on-surface font-medium">Healthy</span></span>
+</div>
+</div>
+<!-- Card 2: System recommendation (Attention Styling) -->
+<div class="bg-surface-container p-space-md rounded flex flex-col justify-between space-y-space-md shadow-md relative overflow-hidden">
+<div class="absolute top-0 left-0 right-0 h-1 bg-secondary-fixed"></div>
+<div class="space-y-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-secondary-fixed font-semibold uppercase tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">info</span>
+            System recommendation
+          </span>
+<span class="px-2 py-0.5 rounded font-label-sm text-label-sm bg-surface-container-highest text-on-surface">Source: active policy</span>
+</div>
+<div>
+<span class="font-headline-sm text-headline-sm text-on-surface block mb-1">Remain Supervised</span>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            Eligibility checks passed, but one autonomy criterion is still below the current requirement for Constrained autonomy.
+          </p>
+</div>
+</div>
+<div class="flex items-center justify-between pt-space-xs font-label-sm text-label-sm text-secondary">
+<span>One autonomy criterion is not yet met.</span>
+</div>
+</div>
+<!-- Card 3: Target considered -->
+<div class="bg-surface-container-low p-space-md rounded flex flex-col justify-between space-y-space-md shadow-sm">
+<div class="space-y-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Target considered</span>
+<span class="px-2 py-0.5 rounded font-label-sm text-label-sm bg-surface-container text-on-surface-variant">L4 · Constrained</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface">
+          AI may work independently within clearly approved boundaries.
+        </p>
+</div>
+<div class="flex items-center gap-1.5 pt-space-sm text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px] text-outline">schedule</span>
+<span>Promotion not recommended at this time</span>
+</div>
+</div>
+</div>
+<!-- Second Row (2 balanced cards) -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-space-md">
+<!-- Card 1: Decision Scope -->
+<div class="bg-surface-container-low p-space-md rounded space-y-space-md shadow-sm">
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">filter_center_focus</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Decision scope</h2>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant bg-surface-container px-2 py-0.5 rounded">Applies to this task only</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+        This decision applies only to the task and scope below. It does not change autonomy for the whole agent.
+      </p>
+<!-- Included Grid -->
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-2 bg-surface-container-lowest p-space-sm rounded">
+<div class="p-2 rounded bg-surface-container-low">
+<span class="block font-label-sm text-label-sm text-on-surface-variant">Agent</span>
+<span class="font-body-md text-body-md text-on-surface font-medium truncate block">Tax Helper</span>
+</div>
+<div class="p-2 rounded bg-surface-container-low">
+<span class="block font-label-sm text-label-sm text-on-surface-variant">Task</span>
+<span class="font-body-md text-body-md text-on-surface font-medium truncate block">Routine rule application</span>
+</div>
+<div class="p-2 rounded bg-surface-container-low">
+<span class="block font-label-sm text-label-sm text-on-surface-variant">Jurisdiction</span>
+<span class="font-body-md text-body-md text-on-surface font-medium truncate block">AU + NZ</span>
+</div>
+<div class="p-2 rounded bg-surface-container-low">
+<span class="block font-label-sm text-label-sm text-on-surface-variant">Case Type</span>
+<span class="font-body-md text-body-md text-on-surface font-medium truncate block">Routine cases</span>
+</div>
+<div class="p-2 rounded bg-surface-container-low col-span-2 sm:col-span-2">
+<span class="block font-label-sm text-label-sm text-on-surface-variant">Current Level</span>
+<span class="font-body-md text-body-md text-secondary font-medium">L3 · Supervised</span>
+</div>
+</div>
+<!-- Excluded Scope Box -->
+<div class="bg-surface-container-high/40 p-space-sm rounded space-y-space-xs">
+<span class="font-label-sm text-label-sm text-on-surface uppercase tracking-wider block font-medium">Not included in this decision</span>
+<div class="flex flex-wrap gap-1.5 py-1">
+<span class="px-2 py-0.5 rounded font-label-sm text-label-sm bg-surface-container-lowest text-on-surface-variant">Complex cases</span>
+<span class="px-2 py-0.5 rounded font-label-sm text-label-sm bg-surface-container-lowest text-on-surface-variant">Cross-border cases</span>
+<span class="px-2 py-0.5 rounded font-label-sm text-label-sm bg-surface-container-lowest text-on-surface-variant">Draft tax position</span>
+<span class="px-2 py-0.5 rounded font-label-sm text-label-sm bg-surface-container-lowest text-on-surface-variant">Filing readiness</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant pt-1">
+          Approving or holding this decision does not affect other Tax Helper tasks or scopes.
+        </p>
+</div>
+</div>
+<!-- Card 2: Decision Basis -->
+<div class="bg-surface-container-low p-space-md rounded space-y-space-md shadow-sm">
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">fact_check</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Decision basis</h2>
+</div>
+<a class="font-label-sm text-label-sm text-primary hover:text-primary-fixed transition-colors flex items-center gap-0.5" href="#">
+          View full scorecard
+          <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</div>
+<div class="space-y-space-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider block">Eligibility checks</span>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 font-body-sm text-body-sm">
+<div class="flex items-center justify-between p-2 rounded bg-surface-container-lowest">
+<span class="text-on-surface">Rules are current</span>
+<span class="px-1.5 py-0.2 rounded font-label-sm text-label-sm bg-tertiary-container/30 text-tertiary font-medium">Pass</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded bg-surface-container-lowest">
+<span class="text-on-surface">Enough cases evaluated</span>
+<span class="px-1.5 py-0.2 rounded font-label-sm text-label-sm bg-tertiary-container/30 text-tertiary font-medium">Pass</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded bg-surface-container-lowest">
+<span class="text-on-surface">No blocking critical issue</span>
+<span class="px-1.5 py-0.2 rounded font-label-sm text-label-sm bg-tertiary-container/30 text-tertiary font-medium">Pass</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded bg-surface-container-lowest">
+<span class="text-on-surface">Required evidence available</span>
+<span class="px-1.5 py-0.2 rounded font-label-sm text-label-sm bg-tertiary-container/30 text-tertiary font-medium">Pass</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded bg-surface-container-lowest sm:col-span-2">
+<span class="text-on-surface">No open safety issue</span>
+<span class="px-1.5 py-0.2 rounded font-label-sm text-label-sm bg-tertiary-container/30 text-tertiary font-medium">Pass</span>
+</div>
+</div>
+</div>
+<div class="space-y-space-sm pt-space-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider block">Autonomy criteria</span>
+<div class="space-y-1.5 font-body-sm text-body-sm">
+<div class="flex items-center justify-between p-2 rounded bg-surface-container-lowest">
+<div class="flex items-center gap-2">
+<span class="text-on-surface">Accuracy</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">(99.4% vs 99.0% threshold)</span>
+</div>
+<span class="px-1.5 py-0.2 rounded font-label-sm text-label-sm bg-tertiary-container/30 text-tertiary font-medium">Pass</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded bg-surface-container-lowest">
+<div class="flex items-center gap-2">
+<span class="text-on-surface">Human override rate</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">(1.2% vs 3.0% limit)</span>
+</div>
+<span class="px-1.5 py-0.2 rounded font-label-sm text-label-sm bg-tertiary-container/30 text-tertiary font-medium">Pass</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded bg-surface-container-lowest">
+<div class="flex items-center gap-2">
+<span class="text-on-surface">Confident-but-wrong</span>
+<span class="font-label-sm text-label-sm text-secondary-fixed">(0.7% vs 0.3% target)</span>
+</div>
+<span class="px-1.5 py-0.2 rounded font-label-sm text-label-sm bg-surface-container-high text-secondary-fixed font-medium">Needs improvement</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Third Row — Your Decision (Visually Prominent Governance Form) -->
+<div class="bg-surface-container p-space-md md:p-space-lg rounded space-y-space-lg shadow-md">
+<!-- Section Header with Reviewer Info -->
+<div class="flex flex-col md:flex-row md:items-center justify-between pb-space-sm bg-surface-container-low p-space-md rounded gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded bg-primary-container/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[24px]">gavel</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider block">Human decision</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">Your decision</span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm px-3 py-1.5 rounded bg-surface-container-lowest">
+<span class="material-symbols-outlined text-[16px] text-primary">badge</span>
+<span class="font-label-sm text-label-sm text-on-surface">Reviewer: Maya</span>
+</div>
+</div>
+<!-- Options Radio-Style Selection Cards -->
+<div class="space-y-space-sm" id="decision-selection-group">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider block">Choose a decision</span>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<!-- Option 1: Selected / Default / Recommended -->
+<label class="cursor-pointer flex flex-col p-space-md rounded bg-surface-container-high/90 hover:bg-surface-container-highest transition-all relative overflow-hidden group decision-option" data-option="remain">
+<input checked="" class="sr-only" name="autonomy_decision" type="radio" value="remain"/>
+<div class="flex items-start justify-between mb-space-sm">
+<div class="flex items-center gap-2">
+<div class="w-4 h-4 rounded-full bg-primary flex items-center justify-center radio-marker">
+<div class="w-1.5 h-1.5 rounded-full bg-on-primary"></div>
+</div>
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">Remain L3 · Supervised</span>
+</div>
+<span class="px-2 py-0.5 rounded font-label-sm text-label-sm bg-primary/20 text-primary font-medium shrink-0">Recommended</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-on-surface transition-colors flex-1">
+            Continue operating under the current supervision level until the outstanding criterion is satisfied.
+          </p>
+<div class="mt-space-md pt-space-xs font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-tertiary">check</span>
+<span>Keeps the current approved level</span>
+</div>
+</label>
+<!-- Option 2: Restrict Scope -->
+<label class="cursor-pointer flex flex-col p-space-md rounded bg-surface-container-low hover:bg-surface-container-high transition-all relative group decision-option" data-option="restrict">
+<input class="sr-only" name="autonomy_decision" type="radio" value="restrict"/>
+<div class="flex items-start justify-between mb-space-sm">
+<div class="flex items-center gap-2">
+<div class="w-4 h-4 rounded-full bg-surface-container-highest flex items-center justify-center radio-marker">
+<div class="w-1.5 h-1.5 rounded-full bg-transparent"></div>
+</div>
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">Restrict scope</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-on-surface transition-colors flex-1">
+            Keep the task Supervised but narrow the approved scope while more evidence is collected.
+          </p>
+<div class="mt-space-md pt-space-xs font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-outline">tune</span>
+<span>Narrows where this level applies</span>
+</div>
+</label>
+<!-- Option 3: Override Recommendation -->
+<label class="cursor-pointer flex flex-col p-space-md rounded bg-surface-container-low hover:bg-surface-container-high transition-all relative group decision-option" data-option="override">
+<input class="sr-only" name="autonomy_decision" type="radio" value="override"/>
+<div class="flex items-start justify-between mb-space-sm">
+<div class="flex items-center gap-2">
+<div class="w-4 h-4 rounded-full bg-surface-container-highest flex items-center justify-center radio-marker">
+<div class="w-1.5 h-1.5 rounded-full bg-transparent"></div>
+</div>
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">Override recommendation</span>
+</div>
+<span class="px-2 py-0.5 rounded font-label-sm text-label-sm bg-surface-container-highest text-secondary-fixed shrink-0">Caution</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-on-surface transition-colors flex-1">
+            Record a different human decision despite the system recommendation.
+          </p>
+<div class="mt-space-md pt-space-xs font-label-sm text-label-sm text-secondary-fixed flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">warning</span>
+<span>Requires a reason and acknowledgement</span>
+</div>
+</label>
+</div>
+</div>
+<!-- Override Notice Box (Hidden or Contextual) -->
+<div class="hidden p-space-sm rounded bg-surface-container-highest text-on-surface text-body-sm flex items-center gap-space-sm" id="override-attestation-banner">
+<span class="material-symbols-outlined text-secondary-fixed shrink-0">info</span>
+<p class="font-body-sm text-body-sm">
+<span class="font-medium text-secondary-fixed">Override acknowledgement:</span> Record a clear reason for choosing a different decision from the system recommendation.
+      </p>
+</div>
+<!-- Decision reason Section -->
+<div class="space-y-space-sm pt-space-xs">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+<label class="font-label-sm text-label-sm text-on-surface uppercase tracking-wider font-semibold" for="decision-rationale">
+          Decision reason <span class="text-error">*</span>
+</label>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Required for the audit history</span>
+</div>
+<!-- Quick Reason Chips -->
+<div class="flex flex-wrap items-center gap-1.5" id="reason-chips">
+<button class="px-2.5 py-1 rounded font-label-sm text-label-sm bg-surface-container-highest text-primary font-medium hover:bg-surface-variant transition-colors chip-btn" data-text="Keep the task at L3 Supervised while additional valid evidence is collected and the outstanding autonomy criterion is reassessed." type="button">
+          More evidence required
+        </button>
+<button class="px-2.5 py-1 rounded font-label-sm text-label-sm bg-surface-container-low text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors chip-btn" data-text="Keep the current autonomy level because the remaining risk is not yet within the approved policy." type="button">
+          Risk remains too high
+        </button>
+<button class="px-2.5 py-1 rounded font-label-sm text-label-sm bg-surface-container-low text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors chip-btn" data-text="Restrict the approved scope while more evidence is collected for the excluded cases." type="button">
+          Scope needs narrowing
+        </button>
+<button class="px-2.5 py-1 rounded font-label-sm text-label-sm bg-surface-container-low text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors chip-btn" data-text="Keep the current level because of additional business context not captured by the evaluation criteria." type="button">
+          Business context
+        </button>
+<button class="px-2.5 py-1 rounded font-label-sm text-label-sm bg-surface-container-low text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors chip-btn" data-text="" type="button">
+          Other
+        </button>
+</div>
+<!-- Textarea Input -->
+<div class="relative">
+<textarea class="w-full bg-surface-container-lowest text-on-surface font-body-md text-body-md rounded p-space-md placeholder:text-on-surface-variant focus:outline-none focus:bg-surface-container-lowest/80 transition-all resize-none" id="decision-rationale" placeholder="Explain why you are keeping, restricting, or overriding the recommended autonomy level." rows="4">Keep the task at L3 Supervised while additional valid evidence is collected and the outstanding autonomy criterion is reassessed.</textarea>
+</div>
+<div class="flex items-center justify-between font-label-sm text-label-sm text-on-surface-variant px-1">
+<span>Reviewer: Maya</span>
+<span id="char-counter">224 characters</span>
+</div>
+</div>
+</div>
+<!-- Fourth Row — Supporting Context (2 columns) -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-space-md">
+<!-- Column 1: Previous Decision -->
+<div class="bg-surface-container-low p-space-md rounded space-y-space-sm shadow-sm flex flex-col justify-between">
+<div class="space-y-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline text-[18px]">history</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Previous Decision</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">14 Oct 2024</span>
+</div>
+<div class="grid grid-cols-2 gap-2 bg-surface-container-lowest p-space-sm rounded">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Previous Level</span>
+<span class="font-body-md text-body-md text-on-surface font-medium">L2 · Assisted</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Action Recorded</span>
+<span class="font-body-md text-body-md text-secondary font-medium">Promoted to L3 · Supervised</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+<span class="font-medium text-on-surface">Recorded rationale:</span> Required evidence and review criteria were met.
+        </p>
+</div>
+<div class="pt-space-xs">
+<a class="font-label-sm text-label-sm text-primary hover:text-primary-fixed transition-colors inline-flex items-center gap-1" href="#">
+          View audit trail in Audit Log
+          <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Column 2: Decision Context (Version & Policy State) -->
+<div class="bg-surface-container-low p-space-md rounded space-y-space-sm shadow-sm flex flex-col justify-between">
+<div class="space-y-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline text-[18px]">rule_folder</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Decision Context</span>
+</div>
+<span class="px-2 py-0.5 rounded font-label-sm text-label-sm bg-tertiary-container/30 text-tertiary font-medium">Versions aligned</span>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-2 bg-surface-container-lowest p-space-sm rounded">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Evaluation policy</span>
+<span class="font-body-md text-body-md text-on-surface font-medium">v1.3</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Agent version</span>
+<span class="font-body-md text-body-md text-on-surface font-medium">v2</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Agent rule version</span>
+<span class="font-body-md text-body-md text-on-surface font-medium">v3.2</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Evaluator rule version</span>
+<span class="font-body-md text-body-md text-on-surface font-medium">v3.2</span>
+</div>
+<div class="col-span-2 sm:col-span-2">
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Current rule version</span>
+<span class="font-body-md text-body-md text-on-surface font-medium">v3.2</span>
+</div>
+</div>
+</div>
+<div class="pt-space-xs">
+<a class="font-label-sm text-label-sm text-primary hover:text-primary-fixed transition-colors inline-flex items-center gap-1" href="#">
+          View evaluation policy in Policies &amp; Versions
+          <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Bottom Action Bar (Sticky Guidance Panel) -->
+<div class="sticky bottom-4 z-40 bg-surface-container-high/95 backdrop-blur-md p-space-md rounded shadow-xl flex flex-col sm:flex-row items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md w-full sm:w-auto">
+<a class="px-3 py-2 rounded bg-surface-container-low text-on-surface hover:bg-surface-container text-body-md font-body-md transition-colors flex items-center gap-1.5" href="#">
+<span class="material-symbols-outlined text-[18px]">arrow_back</span>
+        Return to scorecard
+      </a>
+<button class="px-3 py-2 rounded text-on-surface-variant hover:text-on-surface text-body-md font-body-md transition-colors" type="button">
+        Cancel
+      </button>
+</div>
+<div class="flex flex-col sm:flex-row items-center gap-space-md w-full sm:w-auto justify-end">
+<div class="flex items-center gap-2 text-on-surface-variant font-label-sm text-label-sm text-right hidden md:flex max-w-sm">
+<span class="material-symbols-outlined text-[16px] text-tertiary shrink-0">lock</span>
+<span>Submitting records this decision in the audit history.</span>
+</div>
+<button class="w-full sm:w-auto px-6 py-2.5 rounded bg-primary text-on-primary font-body-md text-body-md font-medium hover:bg-primary-fixed transition-all shadow-md flex items-center justify-center gap-2 active:scale-[0.99]" id="submit-decision-btn" type="button">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+<span>Confirm decision</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Client-side Interactive Logic -->
+<script>
+  (function() {
+    const radioOptions = document.querySelectorAll('.decision-option');
+    const overrideBanner = document.getElementById('override-attestation-banner');
+    const textarea = document.getElementById('decision-rationale');
+    const charCounter = document.getElementById('char-counter');
+    const chipButtons = document.querySelectorAll('.chip-btn');
+    const submitBtn = document.getElementById('submit-decision-btn');
+
+    charCounter.textContent = textarea.value.length + ' characters';
+
+    // Handle Option Card selection
+    radioOptions.forEach(card => {
+      card.addEventListener('click', () => {
+        const input = card.querySelector('input[type="radio"]');
+        input.checked = true;
+
+        radioOptions.forEach(c => {
+          c.classList.remove('bg-surface-container-high/90');
+          c.classList.add('bg-surface-container-low');
+          const marker = c.querySelector('.radio-marker');
+          const dot = marker.querySelector('div');
+          marker.classList.remove('bg-primary');
+          marker.classList.add('bg-surface-container-highest');
+          dot.classList.remove('bg-on-primary');
+          dot.classList.add('bg-transparent');
+        });
+
+        card.classList.remove('bg-surface-container-low');
+        card.classList.add('bg-surface-container-high/90');
+        const marker = card.querySelector('.radio-marker');
+        const dot = marker.querySelector('div');
+        marker.classList.add('bg-primary');
+        marker.classList.remove('bg-surface-container-highest');
+        dot.classList.add('bg-on-primary');
+        dot.classList.remove('bg-transparent');
+
+        if (card.dataset.option === 'override') {
+          overrideBanner.classList.remove('hidden');
+        } else {
+          overrideBanner.classList.add('hidden');
+        }
+      });
+    });
+
+    // Handle Quick Reason Chips
+    chipButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        chipButtons.forEach(b => {
+          b.classList.remove('bg-surface-container-highest', 'text-primary');
+          b.classList.add('bg-surface-container-low', 'text-on-surface-variant');
+        });
+        btn.classList.add('bg-surface-container-highest', 'text-primary');
+        btn.classList.remove('bg-surface-container-low', 'text-on-surface-variant');
+
+        const text = btn.dataset.text;
+        if (text) {
+          textarea.value = text;
+          charCounter.textContent = text.length + ' characters';
+        } else {
+          textarea.focus();
+        }
+      });
+    });
+
+    // Handle Character Counter
+    textarea.addEventListener('input', (e) => {
+      charCounter.textContent = e.target.value.length + ' characters';
+    });
+
+    // Handle Confirm Feedback
+    submitBtn.addEventListener('click', () => {
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span class="material-symbols-outlined text-[18px] animate-spin">refresh</span> Recording...';
+      setTimeout(() => {
+        submitBtn.innerHTML = '<span class="material-symbols-outlined text-[18px]">verified</span> Decision recorded';
+        submitBtn.classList.remove('bg-primary', 'hover:bg-primary-fixed');
+        submitBtn.classList.add('bg-tertiary-container', 'text-on-tertiary');
+      }, 700);
+    });
+  })();
+</script></main><footer class="w-full bg-surface-container-lowest border-t border-outline-variant/30 mt-auto"><div class="max-w-7xl mx-auto px-margin-desktop py-space-md flex flex-col md:flex-row items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm font-label-sm text-label-sm text-on-surface-variant"><span>TASK-LEVEL AUTONOMY</span><span class="text-outline-variant">//</span><span>SYNTHETIC PROTOTYPE DATA</span></div><div class="font-label-sm text-label-sm text-on-surface-variant">Autonomy Gate · Prototype</div></div></footer></body></html>

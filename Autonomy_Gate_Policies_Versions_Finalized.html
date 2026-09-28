@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "secondary": "#89ceff", "inverse-surface": "#dfe2ee", "on-tertiary-fixed": "#002113", "surface-container-highest": "#31353e", "on-error-container": "#ffdad6", "primary": "#c0c1ff", "on-secondary-fixed": "#001e2f", "primary-container": "#8083ff", "on-secondary-container": "#00344e", "surface-container-low": "#181c24", "surface-tint": "#c0c1ff", "on-secondary": "#00344d", "surface-dim": "#0f131c", "on-primary-fixed": "#07006c", "surface-variant": "#31353e", "surface-container": "#1c2028", "on-tertiary": "#003824", "surface-bright": "#353942", "background": "#0f131c", "primary-fixed-dim": "#c0c1ff", "primary-fixed": "#e1e0ff", "on-secondary-fixed-variant": "#004c6e", "inverse-primary": "#494bd6", "on-surface": "#dfe2ee", "on-primary": "#1000a9", "error": "#ffb4ab", "inverse-on-surface": "#2c3039", "tertiary-container": "#00885d", "on-tertiary-fixed-variant": "#005236", "on-background": "#dfe2ee", "secondary-container": "#00a2e6", "on-primary-fixed-variant": "#2f2ebe", "secondary-fixed-dim": "#89ceff", "outline-variant": "#464554", "tertiary-fixed": "#6ffbbe", "tertiary-fixed-dim": "#4edea3", "outline": "#908fa0", "tertiary": "#4edea3", "surface-container-high": "#262a33", "secondary-fixed": "#c9e6ff", "on-tertiary-container": "#000703", "on-surface-variant": "#c7c4d7", "on-primary-container": "#0d0096", "surface-container-lowest": "#0a0e16", "error-container": "#93000a", "surface": "#0f131c", "on-error": "#690005" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "gutter-desktop": "1.5rem", "space-sm": "0.5rem", "space-xl": "2rem", "space-lg": "1.5rem", "space-md": "1rem", "margin-desktop": "2rem", "gutter": "1rem", "margin": "1rem", "space-xs": "0.25rem" }, "fontFamily": { "body-sm": [ "Inter" ], "body-lg": [ "Inter" ], "headline-lg": [ "Inter" ], "body-md": [ "Inter" ], "label-md": [ "JetBrains Mono" ], "label-sm": [ "JetBrains Mono" ], "code-sm": [ "JetBrains Mono" ], "headline-sm": [ "Inter" ], "headline-xl": [ "Inter" ] }, "fontSize": { "body-sm": [ "0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.01em", "fontWeight": "400" } ], "body-lg": [ "1rem", { "lineHeight": "1.5rem", "letterSpacing": "0", "fontWeight": "400" } ], "headline-lg": [ "1.5rem", { "lineHeight": "2rem", "letterSpacing": "-0.015em", "fontWeight": "600" } ], "body-md": [ "0.875rem", { "lineHeight": "1.25rem", "letterSpacing": "0", "fontWeight": "400" } ], "label-md": [ "0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.02em", "fontWeight": "500" } ], "label-sm": [ "0.6875rem", { "lineHeight": "0.875rem", "letterSpacing": "0.03em", "fontWeight": "500" } ], "code-sm": [ "0.8125rem", { "lineHeight": "1.125rem", "letterSpacing": "0", "fontWeight": "400" } ], "headline-sm": [ "1.125rem", { "lineHeight": "1.5rem", "letterSpacing": "-0.01em", "fontWeight": "600" } ], "headline-xl": [ "2rem", { "lineHeight": "2.5rem", "letterSpacing": "-0.02em", "fontWeight": "600" } ] } } } };</script></head><body class="bg-background font-body-md text-on-surface min-h-screen flex flex-col antialiased selection:bg-primary-container selection:text-on-primary-container"><header class="fixed top-0 w-full z-50 bg-surface-container-low/95 backdrop-blur-md border-b border-outline-variant/30"><div class="h-16 w-full px-gutter-desktop flex items-center justify-between gap-space-lg"><div class="flex items-center gap-space-xl"><div class="flex items-center gap-space-md"><div class="flex flex-col"><div class="flex items-center gap-space-sm"><span class="font-headline-sm text-headline-sm tracking-tight text-on-surface font-semibold">Autonomy Gate</span><span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded bg-surface-container-highest border border-outline-variant/40 text-on-surface-variant font-medium tracking-wide">V1.4</span></div><span class="font-body-sm text-body-sm text-on-surface-variant">Evidence-based autonomy for AI tasks</span></div></div><div class="h-8 w-[1px] bg-outline-variant/20 hidden xl:block"></div><nav class="flex items-center gap-space-xs p-1 bg-surface-container-lowest/60 rounded-lg border border-outline-variant/20" data-active-classes="bg-surface-container-high text-on-surface font-medium border border-outline-variant/50"><a class="px-space-md py-1.5 rounded font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="agents-tasks" href="#">Agents &amp; Tasks</a><a class="px-space-md py-1.5 rounded font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="policies-versions" href="#">Policies &amp; Versions</a><a class="px-space-md py-1.5 rounded font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="sandbox-revalidation" href="#">Sandbox Revalidation</a><a class="px-space-md py-1.5 rounded font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="audit-log" href="#">Audit Log</a></nav></div><div class="flex items-center gap-space-lg shrink-0"><div class="flex items-center gap-space-sm px-space-sm py-1 rounded bg-surface-container-lowest border border-outline-variant/30"><div class="w-1.5 h-1.5 rounded-full bg-tertiary shadow-[0_0_8px_rgba(78,222,163,0.5)]"></div><span class="font-label-sm text-label-sm text-on-surface tracking-wider font-medium">PROTOTYPE</span></div><div class="h-4 w-[1px] bg-outline-variant/30"></div><div class="flex items-center gap-space-md"><div class="text-right hidden sm:block"><div class="font-body-sm text-body-sm text-on-surface font-medium leading-none mb-1">Maya</div><div class="font-label-sm text-label-sm text-on-surface-variant leading-none">AI Ops &amp; Governance</div></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></div></header><main class="w-full pt-16 flex-1 bg-background"><div class="flex flex-col w-full">
+<!-- Sub-header Breadcrumb & Action bar -->
+<div class="w-full bg-surface-container-lowest/80 border-b border-outline-variant/30 px-gutter-desktop py-space-sm">
+<div class="max-w-[1600px] mx-auto flex flex-col md:flex-row md:items-center justify-between gap-space-sm">
+<nav aria-label="Breadcrumb" class="flex items-center gap-space-xs text-on-surface-variant font-body-sm text-body-sm">
+<span class="hover:text-on-surface transition-colors cursor-pointer">Agents &amp; Tasks</span>
+<span class="material-symbols-outlined text-[14px] text-outline">chevron_right</span>
+<span class="hover:text-on-surface transition-colors cursor-pointer">Tax Helper</span>
+<span class="material-symbols-outlined text-[14px] text-outline">chevron_right</span>
+<span class="text-on-surface-variant">Routine rule application</span>
+<span class="material-symbols-outlined text-[14px] text-outline">chevron_right</span>
+<span class="text-on-surface font-medium">Policies &amp; Versions</span>
+</nav>
+
+</div>
+</div>
+<div class="w-full px-gutter-desktop py-space-xl max-w-[1600px] mx-auto space-y-space-xl">
+<!-- Title Section -->
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-space-md pb-space-sm">
+<div>
+<div class="flex items-center gap-space-sm mb-1.5">
+<h1 class="font-headline-lg text-headline-lg text-on-surface font-semibold tracking-tight">Policies &amp; Versions</h1>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-surface-container-highest border border-outline-variant/50 text-on-surface-variant tracking-wider font-medium uppercase">
+            SYNTHETIC PROTOTYPE DATA
+          </span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-3xl">
+          Manage the criteria used to evaluate autonomy and verify that task rules remain current.
+        </p>
+</div>
+<div class="flex items-center gap-space-sm">
+
+<button class="px-space-md py-2 rounded bg-primary text-on-primary font-body-sm text-body-sm font-medium hover:bg-primary/90 transition-colors flex items-center gap-1.5 shadow-sm" onclick="document.getElementById('edit-policy-drawer').scrollIntoView({behavior: 'smooth'})" type="button">
+<span class="material-symbols-outlined text-[16px]">tune</span>
+          Edit policy
+        </button>
+</div>
+</div>
+<!-- Top Policy Overview: 4 compact summary cards -->
+<section aria-label="Policy Summary Counters" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<!-- Card 1 -->
+<div class="bg-surface-container border border-outline-variant/40 rounded-lg p-space-md flex flex-col justify-between shadow-sm">
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider mb-2">
+<span>Task policies</span>
+<span class="material-symbols-outlined text-outline text-[18px]">rule_folder</span>
+</div>
+<div>
+<div class="font-headline-lg text-headline-lg text-on-surface font-semibold">8 task policies</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mt-1">Tasks with an evaluation policy</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container border border-outline-variant/40 rounded-lg p-space-md flex flex-col justify-between shadow-sm">
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider mb-2">
+<span>Versions aligned</span>
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+</div>
+<div>
+<div class="font-headline-lg text-headline-lg text-tertiary font-semibold flex items-center gap-2">
+            7 aligned
+          </div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mt-1">Agent and evaluator use the current rule version</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container border border-outline-variant/40 rounded-lg p-space-md flex flex-col justify-between shadow-sm relative overflow-hidden">
+<div class="absolute top-0 right-0 w-16 h-16 bg-error/5 -mr-4 -mt-4 rounded-full pointer-events-none"></div>
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider mb-2">
+<span class="text-error">Needs attention</span>
+<span class="w-2 h-2 rounded-full bg-error"></span>
+</div>
+<div>
+<div class="font-headline-lg text-headline-lg text-error font-semibold">1 needs attention</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mt-1">One task has a version mismatch</div>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface-container border border-outline-variant/40 rounded-lg p-space-md flex flex-col justify-between shadow-sm">
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider mb-2">
+<span>Recently changed</span>
+<span class="material-symbols-outlined text-secondary text-[18px]">update</span>
+</div>
+<div>
+<div class="font-headline-lg text-headline-lg text-secondary font-semibold">1 changed recently</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mt-1">One policy was updated recently</div>
+</div>
+</div>
+</section>
+<!-- Task Policies List Panel (Interactive table with active selection) -->
+<section class="bg-surface-container-low border border-outline-variant/40 rounded-lg overflow-hidden shadow-sm">
+<div class="p-space-md md:px-space-lg border-b border-outline-variant/30 flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm bg-surface-container/60">
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Task policies</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Select a task to review its policy and rule versions</p>
+</div>
+<div class="flex items-center gap-space-sm">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-outline text-[16px]">search</span>
+<input class="bg-surface-container-lowest border border-outline-variant/40 rounded py-1 pl-8 pr-3 font-body-sm text-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:border-primary w-48 lg:w-64" placeholder="Filter task or policy..." type="text"/>
+</div>
+<button class="p-1.5 rounded bg-surface-container-high border border-outline-variant/40 text-on-surface-variant hover:text-on-surface" type="button">
+<span class="material-symbols-outlined text-[18px]">filter_list</span>
+</button>
+</div>
+</div>
+<div class="w-full overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-high/70 border-b border-outline-variant/40 text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">
+<th class="py-2.5 px-space-md font-medium">Agent</th>
+<th class="py-2.5 px-space-md font-medium">Task</th>
+<th class="py-2.5 px-space-md font-medium">Current autonomy</th>
+<th class="py-2.5 px-space-md font-medium">Policy version</th>
+<th class="py-2.5 px-space-md font-medium">Rule status</th>
+<th class="py-2.5 px-space-md font-medium">Needs attention</th>
+<th class="py-2.5 px-space-md font-medium text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/20 font-body-sm text-body-sm">
+<!-- Row 1: Invoice Helper / Read invoice fields -->
+<tr class="hover:bg-surface-container/60 transition-colors">
+<td class="py-3 px-space-md text-on-surface font-medium">Invoice Helper</td>
+<td class="py-3 px-space-md text-on-surface-variant font-medium">Read invoice fields</td>
+<td class="py-3 px-space-md">
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm px-2 py-0.5 rounded bg-surface-container-high border border-outline-variant/40 text-on-surface">
+<span class="font-medium text-secondary">L4</span>
+<span class="text-outline">·</span>
+<span>Constrained</span>
+</span>
+</td>
+<td class="py-3 px-space-md font-code-sm text-code-sm text-on-surface-variant">v1.2</td>
+<td class="py-3 px-space-md">
+<span class="inline-flex items-center gap-1.5 text-tertiary font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                  Current
+                </span>
+</td>
+<td class="py-3 px-space-md text-on-surface-variant">None</td>
+<td class="py-3 px-space-md text-right">
+<button class="px-2.5 py-1 rounded bg-surface-container-high border border-outline-variant/40 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest transition-colors font-body-sm text-body-sm" type="button">Select</button>
+</td>
+</tr>
+<!-- Row 2: Invoice Helper / Classify expense -->
+<tr class="hover:bg-surface-container/60 transition-colors">
+<td class="py-3 px-space-md text-on-surface font-medium">Invoice Helper</td>
+<td class="py-3 px-space-md text-on-surface-variant font-medium">Classify expense</td>
+<td class="py-3 px-space-md">
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm px-2 py-0.5 rounded bg-surface-container-high border border-outline-variant/40 text-on-surface">
+<span class="font-medium text-primary">L3</span>
+<span class="text-outline">·</span>
+<span>Supervised</span>
+</span>
+</td>
+<td class="py-3 px-space-md font-code-sm text-code-sm text-on-surface-variant">v1.1</td>
+<td class="py-3 px-space-md">
+<span class="inline-flex items-center gap-1.5 text-tertiary font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                  Current
+                </span>
+</td>
+<td class="py-3 px-space-md text-on-surface-variant">None</td>
+<td class="py-3 px-space-md text-right">
+<button class="px-2.5 py-1 rounded bg-surface-container-high border border-outline-variant/40 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest transition-colors font-body-sm text-body-sm" type="button">Select</button>
+</td>
+</tr>
+<!-- Row 3: Tax Helper / Routine rule application (SELECTED / HIGHLIGHTED) -->
+<tr class="bg-surface-container-high/90 border-l-4 border-l-primary hover:bg-surface-container-highest/80 transition-colors">
+<td class="py-3.5 px-space-md text-on-surface font-semibold flex items-center gap-2">
+<span>Tax Helper</span>
+<span class="font-label-sm text-label-sm text-primary uppercase font-mono px-1 rounded bg-primary/10">Selected</span>
+</td>
+<td class="py-3.5 px-space-md text-on-surface font-medium">Routine rule application</td>
+<td class="py-3.5 px-space-md">
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm px-2 py-0.5 rounded bg-surface-container-lowest border border-primary/40 text-on-surface">
+<span class="font-medium text-primary font-bold">L3</span>
+<span class="text-outline">·</span>
+<span>Supervised</span>
+</span>
+</td>
+<td class="py-3.5 px-space-md font-code-sm text-code-sm text-on-surface font-medium">v1.3</td>
+<td class="py-3.5 px-space-md">
+<span class="inline-flex items-center gap-1.5 text-tertiary font-label-sm text-label-sm font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary shadow-[0_0_6px_rgba(78,222,163,0.8)]"></span>
+                  Current
+                </span>
+</td>
+<td class="py-3.5 px-space-md text-on-surface-variant font-label-sm text-label-sm">None</td>
+<td class="py-3.5 px-space-md text-right">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-primary/20 text-primary border border-primary/40 font-label-sm text-label-sm font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                  Selected
+                </span>
+</td>
+</tr>
+<!-- Row 4: Tax Helper / Draft tax position (Needs attention) -->
+<tr class="hover:bg-surface-container/60 transition-colors">
+<td class="py-3 px-space-md text-on-surface font-medium">Tax Helper</td>
+<td class="py-3 px-space-md text-on-surface-variant font-medium">Draft tax position</td>
+<td class="py-3 px-space-md">
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm px-2 py-0.5 rounded bg-surface-container-high border border-outline-variant/40 text-on-surface">
+<span class="font-medium text-outline">L2</span>
+<span class="text-outline">·</span>
+<span>Assisted</span>
+</span>
+</td>
+<td class="py-3 px-space-md font-code-sm text-code-sm text-on-surface-variant">v1.2</td>
+<td class="py-3 px-space-md">
+<span class="inline-flex items-center gap-1.5 text-error font-label-sm text-label-sm font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+                  Version mismatch
+                </span>
+</td>
+<td class="py-3 px-space-md">
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm px-2 py-0.5 rounded bg-error-container/40 text-error border border-error/30 font-medium">
+                  Needs review
+                </span>
+</td>
+<td class="py-3 px-space-md text-right">
+<button class="px-2.5 py-1 rounded bg-error/10 border border-error/40 text-error hover:bg-error/20 transition-colors font-body-sm text-body-sm font-medium" type="button">Review issue</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- Selected Task Policy Section Banner -->
+<div class="bg-surface-container border border-outline-variant/40 rounded-lg p-space-md flex flex-col md:flex-row md:items-center justify-between gap-space-md shadow-sm">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded bg-primary/10 border border-primary/30 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary text-[22px]">policy</span>
+</div>
+<div>
+<div class="flex items-center gap-space-sm flex-wrap">
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Routine rule application</h2>
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm px-2 py-0.5 rounded bg-tertiary-container/30 border border-tertiary/40 text-tertiary font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+              Active
+            </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+            Evaluation policy for this task.
+          </p>
+</div>
+</div>
+<!-- Metadata chips rail -->
+<div class="flex items-center gap-space-xs flex-wrap font-label-sm text-label-sm">
+<div class="px-space-sm py-1 rounded bg-surface-container-lowest border border-outline-variant/30 text-on-surface-variant">
+          Agent: <span class="text-on-surface font-medium">Tax Helper</span>
+</div>
+<div class="px-space-sm py-1 rounded bg-surface-container-lowest border border-outline-variant/30 text-on-surface-variant">
+          Policy: <span class="text-primary font-medium">v1.3</span>
+</div>
+<div class="px-space-sm py-1 rounded bg-surface-container-lowest border border-outline-variant/30 text-on-surface-variant">
+          Current autonomy: <span class="text-on-surface font-medium">L3 · Supervised</span>
+</div>
+<div class="px-space-sm py-1 rounded bg-surface-container-lowest border border-outline-variant/30 text-on-surface-variant">
+          Status: <span class="text-on-surface font-medium">Active</span>
+</div>
+</div>
+</div>
+<!-- Main Workspace Grid: Two Main Columns -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-start">
+<!-- LEFT COLUMN: Eligibility Checks & Autonomy Criteria (7 cols) -->
+<div class="lg:col-span-7 space-y-space-xl">
+<!-- 1. Eligibility Checks (Non-negotiable baseline gates) -->
+<div class="bg-surface-container-low border border-outline-variant/40 rounded-lg p-space-md md:p-space-lg shadow-sm">
+<div class="flex items-start justify-between gap-space-sm mb-space-sm">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold flex items-center gap-2">
+                Eligibility checks
+                <span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-mono">5 checks</span>
+</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+                These checks must pass before autonomy criteria are evaluated.
+              </p>
+</div>
+<span class="material-symbols-outlined text-tertiary text-[22px]">verified</span>
+</div>
+<div class="mt-space-md border border-outline-variant/30 rounded overflow-hidden divide-y divide-outline-variant/20 bg-surface-container-lowest">
+<!-- Item 1 -->
+<div class="p-space-sm md:px-space-md md:py-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+<div class="space-y-0.5">
+<div class="text-on-surface font-body-sm text-body-sm font-medium flex items-center gap-2">
+<span>Rules are current</span>
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+</div>
+<div class="text-on-surface-variant font-label-sm text-label-sm">Current rule versions are aligned</div>
+</div>
+<div class="flex items-center gap-space-md justify-between sm:justify-end">
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm px-2 py-0.5 rounded bg-tertiary-container/30 text-tertiary border border-tertiary/40 font-medium">
+                  Pass
+                </span>
+<span class="font-label-sm text-label-sm text-outline"></span>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="p-space-sm md:px-space-md md:py-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+<div class="space-y-0.5">
+<div class="text-on-surface font-body-sm text-body-sm font-medium flex items-center gap-2">
+<span>Enough cases evaluated</span>
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+</div>
+<div class="text-on-surface-variant font-label-sm text-label-sm">Minimum cases: 200</div>
+</div>
+<div class="flex items-center gap-space-md justify-between sm:justify-end">
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm px-2 py-0.5 rounded bg-tertiary-container/30 text-tertiary border border-tertiary/40 font-medium">
+                  Pass
+                </span>
+<button class="font-label-sm text-label-sm text-primary hover:underline font-medium" type="button">Edit setting</button>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="p-space-sm md:px-space-md md:py-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+<div class="space-y-0.5">
+<div class="text-on-surface font-body-sm text-body-sm font-medium flex items-center gap-2">
+<span>No blocking critical issue</span>
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+</div>
+<div class="text-on-surface-variant font-label-sm text-label-sm">No blocking critical issue</div>
+</div>
+<div class="flex items-center gap-space-md justify-between sm:justify-end">
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm px-2 py-0.5 rounded bg-tertiary-container/30 text-tertiary border border-tertiary/40 font-medium">
+                  Pass
+                </span>
+<span class="font-label-sm text-label-sm text-outline"></span>
+</div>
+</div>
+<!-- Item 4 -->
+<div class="p-space-sm md:px-space-md md:py-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+<div class="space-y-0.5">
+<div class="text-on-surface font-body-sm text-body-sm font-medium flex items-center gap-2">
+<span>Required evidence available</span>
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+</div>
+<div class="text-on-surface-variant font-label-sm text-label-sm">Required evidence is available</div>
+</div>
+<div class="flex items-center gap-space-md justify-between sm:justify-end">
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm px-2 py-0.5 rounded bg-tertiary-container/30 text-tertiary border border-tertiary/40 font-medium">
+                  Pass
+                </span>
+<span class="font-label-sm text-label-sm text-outline"></span>
+</div>
+</div>
+<!-- Item 5 -->
+<div class="p-space-sm md:px-space-md md:py-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+<div class="space-y-0.5">
+<div class="text-on-surface font-body-sm text-body-sm font-medium flex items-center gap-2">
+<span>No open safety incident</span>
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
+</div>
+<div class="text-on-surface-variant font-label-sm text-label-sm">No open safety issue</div>
+</div>
+<div class="flex items-center gap-space-md justify-between sm:justify-end">
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant border border-outline-variant/40">
+                  None active
+                </span>
+<span class="font-label-sm text-label-sm text-outline"></span>
+</div>
+</div>
+</div>
+</div>
+<!-- 2. Autonomy Criteria (Thresholds required to maintain or elevate autonomy) -->
+<div class="bg-surface-container-low border border-outline-variant/40 rounded-lg p-space-md md:p-space-lg shadow-sm">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm mb-space-sm">
+<div>
+<div class="flex items-center gap-space-xs">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Autonomy criteria</h3>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-surface-container-high border border-outline-variant/40 text-on-surface-variant">
+                  Dummy policy values for prototype design
+                </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+                Criteria used to evaluate whether this task can earn more autonomy.
+              </p>
+</div>
+<button class="px-space-md py-1.5 rounded bg-surface-container-high border border-outline-variant/50 hover:bg-surface-container-highest text-on-surface font-body-sm text-body-sm font-medium transition-colors flex items-center gap-1 shrink-0" onclick="document.getElementById('edit-policy-drawer').classList.toggle('hidden')" type="button">
+<span class="material-symbols-outlined text-[16px]">edit</span>
+              Edit policy
+            </button>
+</div>
+<!-- Benchmark Criteria Grid -->
+<div class="mt-space-md border border-outline-variant/30 rounded overflow-hidden divide-y divide-outline-variant/20 bg-surface-container-lowest">
+<!-- Row 1: Accuracy -->
+<div class="p-space-md flex flex-col md:flex-row md:items-center justify-between gap-space-sm">
+<div class="space-y-0.5">
+<div class="font-body-sm text-body-sm text-on-surface font-semibold">Accuracy</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant"></div>
+</div>
+<div class="text-right">
+<div class="font-code-sm text-code-sm font-medium text-tertiary">≥ 98.0%</div>
+
+</div>
+</div>
+<!-- Row 2: Confident-but-wrong rate -->
+<div class="p-space-md flex flex-col md:flex-row md:items-center justify-between gap-space-sm bg-surface-container-low/40">
+<div class="space-y-0.5">
+<div class="font-body-sm text-body-sm text-on-surface font-semibold flex items-center gap-2">
+                  Confident-but-wrong rate
+                  
+</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant"></div>
+</div>
+<div class="text-right">
+<div class="font-code-sm text-code-sm font-medium text-primary">≤ 0.3%</div>
+
+</div>
+</div>
+<!-- Row 3: Human override rate -->
+<div class="p-space-md flex flex-col md:flex-row md:items-center justify-between gap-space-sm">
+<div class="space-y-0.5">
+<div class="font-body-sm text-body-sm text-on-surface font-semibold">Human override rate</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant"></div>
+</div>
+<div class="text-right">
+<div class="font-code-sm text-code-sm font-medium text-tertiary">≤ 5.0%</div>
+
+</div>
+</div>
+<!-- Row 4: Evidence coverage -->
+<div class="p-space-md flex flex-col md:flex-row md:items-center justify-between gap-space-sm bg-surface-container-low/40">
+<div class="space-y-0.5">
+<div class="font-body-sm text-body-sm text-on-surface font-semibold">Evidence coverage</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant"></div>
+</div>
+<div class="text-right">
+<div class="font-code-sm text-code-sm font-medium text-tertiary">100%</div>
+
+</div>
+</div>
+<!-- Row 5: Critical errors allowed -->
+<div class="p-space-md flex flex-col md:flex-row md:items-center justify-between gap-space-sm">
+<div class="space-y-0.5">
+<div class="font-body-sm text-body-sm text-on-surface font-semibold">Critical errors allowed</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant"></div>
+</div>
+<div class="text-right">
+<div class="font-code-sm text-code-sm font-medium text-tertiary">0</div>
+
+</div>
+</div>
+</div>
+<!-- Inline Edit Modal / Expanded Panel (Simulated inside card) -->
+<div class="hidden mt-space-lg bg-surface-container border border-primary/40 rounded-lg p-space-md md:p-space-lg shadow-md transition-all" id="edit-policy-drawer">
+<div class="flex items-center justify-between pb-space-sm border-b border-outline-variant/30 mb-space-md">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">tune</span>
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Edit policy</h4>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">New version: <span class="text-primary font-mono font-medium">v1.4</span></span>
+</div>
+<form class="space-y-space-md" onsubmit="event.preventDefault();">
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-space-md">
+<!-- Field 1 -->
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-1">Minimum cases</label>
+<div class="relative">
+<input class="w-full bg-surface-container-lowest border border-outline-variant/40 rounded p-2 font-code-sm text-code-sm text-on-surface focus:outline-none focus:border-primary" type="number" value="200"/>
+<span class="absolute right-2.5 top-1/2 -translate-y-1/2 font-label-sm text-label-sm text-outline">cases</span>
+</div>
+</div>
+<!-- Field 2 -->
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-1">Accuracy requirement</label>
+<div class="relative">
+<input class="w-full bg-surface-container-lowest border border-outline-variant/40 rounded p-2 font-code-sm text-code-sm text-on-surface focus:outline-none focus:border-primary" type="text" value="98.0"/>
+<span class="absolute right-2.5 top-1/2 -translate-y-1/2 font-label-sm text-label-sm text-outline">%</span>
+</div>
+</div>
+<!-- Field 3 -->
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-1">Confident-but-wrong limit</label>
+<div class="relative">
+<input class="w-full bg-surface-container-lowest border border-outline-variant/40 rounded p-2 font-code-sm text-code-sm text-on-surface focus:outline-none focus:border-primary" type="text" value="0.3"/>
+<span class="absolute right-2.5 top-1/2 -translate-y-1/2 font-label-sm text-label-sm text-outline">%</span>
+</div>
+</div>
+<!-- Field 4 -->
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-1">Human override limit</label>
+<div class="relative">
+<input class="w-full bg-surface-container-lowest border border-outline-variant/40 rounded p-2 font-code-sm text-code-sm text-on-surface focus:outline-none focus:border-primary" type="text" value="5.0"/>
+<span class="absolute right-2.5 top-1/2 -translate-y-1/2 font-label-sm text-label-sm text-outline">%</span>
+</div>
+</div>
+<!-- Field 5 -->
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-1">Evidence coverage</label>
+<div class="relative">
+<input class="w-full bg-surface-container-lowest border border-outline-variant/40 rounded p-2 font-code-sm text-code-sm text-on-surface focus:outline-none focus:border-primary" type="text" value="100"/>
+<span class="absolute right-2.5 top-1/2 -translate-y-1/2 font-label-sm text-label-sm text-outline">%</span>
+</div>
+</div>
+<!-- Field 6 -->
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-1">Critical errors allowed</label>
+<div class="relative">
+<input class="w-full bg-surface-container-lowest border border-outline-variant/40 rounded p-2 font-code-sm text-code-sm text-on-surface focus:outline-none focus:border-primary" type="number" value="0"/>
+<span class="absolute right-2.5 top-1/2 -translate-y-1/2 font-label-sm text-label-sm text-outline">max</span>
+</div>
+</div>
+</div>
+<!-- Notice Box -->
+<div class="bg-surface-container-lowest border border-outline-variant/40 rounded p-space-sm md:p-space-md flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-outline text-[20px] mt-0.5 shrink-0">info</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+<span class="text-on-surface font-medium">Important:</span> Changing evaluation criteria creates a new policy version (<span class="font-code-sm text-code-sm text-primary">v1.4</span>). Historical autonomy decisions will continue to reference the policy version used at the time.
+                </p>
+</div>
+<!-- Action buttons -->
+<div class="flex items-center justify-end gap-space-sm pt-space-xs">
+<button class="px-space-md py-1.5 rounded bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-body-sm text-body-sm transition-colors border border-outline-variant/30" onclick="document.getElementById('edit-policy-drawer').classList.add('hidden')" type="button">
+                  Cancel
+                </button>
+<button class="px-space-md py-1.5 rounded bg-primary text-on-primary font-body-sm text-body-sm font-medium hover:bg-primary/90 transition-colors shadow-sm" type="button">
+                  Save as new version
+                </button>
+</div>
+</form>
+</div>
+</div>
+</div>
+<!-- RIGHT COLUMN: Rule Version Alignment & Version Mismatch Alert (5 cols) -->
+<div class="lg:col-span-5 space-y-space-xl">
+<!-- 1. Rule Versions Alignment Card -->
+<div class="bg-surface-container-low border border-outline-variant/40 rounded-lg p-space-md md:p-space-lg shadow-sm">
+<div class="flex items-start justify-between gap-space-sm mb-space-sm">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Rule versions</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+                Shows whether the task and evaluator use the current rule version.
+              </p>
+</div>
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm px-2 py-0.5 rounded bg-tertiary-container/30 text-tertiary border border-tertiary/40 font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+              Versions aligned
+            </span>
+</div>
+<div class="mt-space-md bg-surface-container-lowest border border-outline-variant/30 rounded p-space-md space-y-space-sm">
+<div class="grid grid-cols-2 gap-space-sm pb-space-sm border-b border-outline-variant/20">
+<div class="font-body-sm text-body-sm text-on-surface-variant">Agent rule version</div>
+<div class="font-code-sm text-code-sm text-on-surface font-medium text-right">v3.2</div>
+</div>
+<div class="grid grid-cols-2 gap-space-sm pb-space-sm border-b border-outline-variant/20">
+<div class="font-body-sm text-body-sm text-on-surface-variant">Evaluator rule version</div>
+<div class="font-code-sm text-code-sm text-on-surface font-medium text-right">v3.2</div>
+</div>
+<div class="grid grid-cols-2 gap-space-sm pt-0.5">
+<div class="font-body-sm text-body-sm text-on-surface font-medium">Current rule</div>
+<div class="font-code-sm text-code-sm text-tertiary font-bold text-right">v3.2</div>
+</div>
+</div>
+<div class="mt-space-md bg-surface-container-high/40 rounded p-space-sm border border-outline-variant/30 flex items-start gap-2">
+<span class="material-symbols-outlined text-outline text-[16px] mt-0.5 shrink-0">lock</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant text-[12px] leading-relaxed">
+              Evaluation uses the current validated rule version. If versions differ, evaluation pauses.
+            </p>
+</div>
+</div>
+<!-- 2. Version Mismatch Alert Card -->
+<div class="bg-surface-container-low border border-error/40 rounded-lg p-space-md md:p-space-lg shadow-sm relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1.5 h-full bg-error"></div>
+<div class="flex items-start justify-between gap-space-sm mb-space-sm">
+<div>
+<span class="font-label-sm text-label-sm text-error uppercase font-semibold tracking-wider">Needs attention</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold mt-0.5">Tax Helper → Draft tax position</h3>
+</div>
+<span class="material-symbols-outlined text-error text-[22px]">warning</span>
+</div>
+<div class="flex items-center gap-space-xs my-space-sm flex-wrap">
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm px-2 py-0.5 rounded bg-error-container/40 text-error border border-error/40 font-medium">
+              Version mismatch
+            </span>
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant border border-outline-variant/40">
+              Evaluation paused
+            </span>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded p-space-md space-y-space-sm my-space-md">
+<div class="grid grid-cols-2 gap-space-sm pb-space-sm border-b border-outline-variant/20">
+<div class="font-body-sm text-body-sm text-on-surface-variant">Agent rule</div>
+<div class="font-code-sm text-code-sm text-on-surface font-medium text-right">v2.4</div>
+</div>
+<div class="grid grid-cols-2 gap-space-sm pb-space-sm border-b border-outline-variant/20">
+<div class="font-body-sm text-body-sm text-on-surface-variant">Evaluator rule</div>
+<div class="font-code-sm text-code-sm text-error font-medium text-right">v2.3</div>
+</div>
+<div class="grid grid-cols-2 gap-space-sm pt-0.5">
+<div class="font-body-sm text-body-sm text-on-surface font-medium">Current rule</div>
+<div class="font-code-sm text-code-sm text-on-surface-variant font-mono text-right">v2.4</div>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed mb-space-md">
+            Evaluation for this task is paused until the evaluator uses the current rule version.
+          </p>
+<button class="w-full px-space-md py-2 rounded bg-surface-container-high border border-outline-variant/40 text-on-surface hover:bg-surface-container-highest transition-colors font-body-sm text-body-sm font-medium flex items-center justify-center gap-2" type="button">
+<span>Review mismatch</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<span class="font-code-sm text-code-sm text-outline-variant">SHA256: 7f...4a</span>
+</div>
+</div>
+</div>
+<!-- Bottom Section: Demo scenario & Policy version History -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl">
+<!-- 1. Example policy change (6 cols) -->
+<div class="lg:col-span-6 bg-surface-container-low border border-outline-variant/40 rounded-lg p-space-md md:p-space-lg shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-space-sm">
+<div>
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-wider font-semibold">Example</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Example policy change</h3>
+</div>
+<span class="material-symbols-outlined text-outline text-[20px]">difference</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-md">
+            Shows how a policy change creates a new version.
+          </p>
+<!-- Two comparative columns -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md mb-space-md">
+<!-- Before -->
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded p-space-md space-y-space-xs">
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+<span>Before</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container-highest text-on-surface-variant">Previous</span>
+</div>
+<div class="font-body-sm text-body-sm text-on-surface font-medium pt-1">Policy v1.2</div>
+<div class="font-code-sm text-code-sm text-on-surface-variant">Confident-but-wrong limit:</div>
+<div class="font-headline-sm text-headline-sm text-on-surface font-mono">≤ 0.5%</div>
+</div>
+<!-- Current -->
+<div class="bg-surface-container-lowest border border-primary/40 rounded p-space-md space-y-space-xs">
+<div class="flex items-center justify-between text-primary font-label-sm text-label-sm font-medium">
+<span>Current</span>
+<span class="px-1.5 py-0.2 rounded bg-primary/20 text-primary">Active</span>
+</div>
+<div class="font-body-sm text-body-sm text-on-surface font-medium pt-1">Policy v1.3</div>
+<div class="font-code-sm text-code-sm text-on-surface-variant">Confident-but-wrong limit:</div>
+<div class="font-headline-sm text-headline-sm text-primary font-mono">≤ 0.3%</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant pt-0.5">Status: 14 Oct 2024</div>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-high/40 rounded p-space-sm md:p-space-md border border-outline-variant/30">
+<div class="flex items-start gap-2">
+<span class="material-symbols-outlined text-outline text-[18px] mt-0.5 shrink-0">sync_alt</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+New evaluations use v1.3. Historical decisions continue to reference the policy version used at the time.
+            </p>
+</div>
+</div>
+</div>
+<!-- 2. Policy version history (6 cols) -->
+<div class="lg:col-span-6 bg-surface-container-low border border-outline-variant/40 rounded-lg p-space-md md:p-space-lg shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-space-sm mb-space-sm border-b border-outline-variant/20">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Policy history</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Previous policy versions for this task</p>
+</div>
+<a class="font-body-sm text-body-sm text-primary hover:underline font-medium flex items-center gap-1" href="#">
+              View full history →
+            </a>
+</div>
+<!-- Timeline -->
+<div class="space-y-space-md my-space-sm relative before:absolute before:left-3 before:top-2 before:bottom-2 before:w-px before:bg-outline-variant/30">
+<!-- v1.3 -->
+<div class="flex items-start gap-space-md pl-8 relative">
+<span class="absolute left-1.5 top-1.5 w-3 h-3 rounded-full bg-primary ring-4 ring-surface-container-low"></span>
+<div class="w-full bg-surface-container-lowest border border-outline-variant/30 rounded p-space-sm">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+<div class="flex items-center gap-2">
+<span class="font-code-sm text-code-sm text-on-surface font-semibold">v1.3</span>
+<span class="font-label-sm text-label-sm px-1.5 py-0.2 rounded bg-tertiary-container/30 text-tertiary font-medium">Active</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Dummy date</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface mt-1">
+                  Changed: Confident-but-wrong limit <span class="font-mono text-outline">0.5% →</span> <span class="font-mono text-primary font-medium">0.3%</span>
+</p>
+
+</div>
+</div>
+<!-- v1.2 -->
+<div class="flex items-start gap-space-md pl-8 relative">
+<span class="absolute left-1.5 top-1.5 w-3 h-3 rounded-full bg-surface-container-highest ring-4 ring-surface-container-low"></span>
+<div class="w-full bg-surface-container-lowest border border-outline-variant/30 rounded p-space-sm">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+<div class="flex items-center gap-2">
+<span class="font-code-sm text-code-sm text-on-surface font-medium">v1.2</span>
+<span class="font-label-sm text-label-sm px-1.5 py-0.2 rounded bg-surface-container-high text-on-surface-variant">Previous</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Dummy date</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+                  Previous policy version.
+                </p>
+
+</div>
+</div>
+<!-- v1.1 -->
+<div class="flex items-start gap-space-md pl-8 relative">
+<span class="absolute left-1.5 top-1.5 w-3 h-3 rounded-full bg-surface-container-highest ring-4 ring-surface-container-low"></span>
+<div class="w-full bg-surface-container-lowest border border-outline-variant/30 rounded p-space-sm">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+<div class="flex items-center gap-2">
+<span class="font-code-sm text-code-sm text-on-surface font-medium">v1.1</span>
+<span class="font-label-sm text-label-sm px-1.5 py-0.2 rounded bg-surface-container-high text-on-surface-variant">Previous</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Dummy date</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+                  Initial prototype policy.
+                </p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="pt-space-sm border-t border-outline-variant/20 mt-space-sm">
+<a class="font-body-sm text-body-sm text-primary hover:underline flex items-center justify-between font-medium" href="#">
+<span>View related decisions in Audit Log</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div></main><footer class="w-full bg-surface-container-lowest border-t border-outline-variant/30 py-space-sm mt-auto"><div class="w-full px-gutter-desktop flex flex-col md:flex-row items-center justify-between gap-space-sm text-on-surface-variant"><div class="flex items-center gap-space-md"><span class="font-code-sm text-code-sm text-on-surface-variant tracking-wider">SYNTHETIC PROTOTYPE DATA</span></div><div class="font-body-sm text-body-sm text-on-surface-variant">Autonomy Gate · Prototype</div></div></footer></body></html>
