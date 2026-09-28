@@ -36,10 +36,15 @@ this changes presentation only and can never change a decision.
 
 ### 1.3 Set a spend cap at TypeSafe — **the one thing still worth doing**
 
-The usage protection in the code (§2.3) is best effort: counters live in one
-serverless instance's memory, so they reset on a cold start and are not shared
-between concurrent instances. A provider-side spend or quota cap is the only
-thing that makes the bill genuinely bounded. It is a dashboard setting, not code.
+The usage protection in the code (§2.3) is best effort, and **this was observed on
+production, not merely predicted**: counters live in one serverless instance's
+memory, so a request routed to a second warm instance gets a fresh allowance. The
+effective ceiling is therefore the per-visitor burst multiplied by however many
+instances are warm, not the burst itself, and it resets on a cold start.
+
+A provider-side spend or quota cap is the only thing that makes the bill
+genuinely bounded. It is a dashboard setting, not code, and it is the reason the
+in-memory limiter does not need to be perfect.
 
 Removing `TYPESAFE_API_KEY` from the Vercel project reverts to seeded responses
 at any time, and the About panel updates itself.
@@ -87,7 +92,12 @@ per UTC day. Exceeding either selects the seeded provider instead of the live
 one — a path that already existed — and the panel says so. Verified end to end
 against the real provider: calls 1–8 returned `live: true` with confidence
 varying 0.88–0.92; calls 9–12 returned `live: false, limited: true` with the same
-bounded answer, no errors, and a second visitor was unaffected.
+bounded answer, no errors, and a second visitor was unaffected. Re-verified on the
+public site after deployment, including the panel wording.
+
+Measured caveat: a request routed to a second warm serverless instance gets a
+fresh allowance, so the real ceiling is the burst times the number of warm
+instances. See §1.3 — the provider-side cap is what bounds this.
 
 The panel's wording when limited:
 
