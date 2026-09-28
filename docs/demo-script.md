@@ -3,7 +3,9 @@
 **Live:** <https://autonomy-gate.vercel.app>
 
 Nothing to install, nothing to sign in to. Anything you change is kept in your
-own browser and **Reset demo** in the footer puts it back.
+own browser and **Reset demo** in the footer puts it back. If the footer shows
+that control when you arrive, click it first so the walkthrough starts from the
+seeded state.
 
 Two versions below: a **five-minute walkthrough** for a live conversation, and a
 **one-minute version** for when someone is only half-listening.

@@ -3,7 +3,8 @@
 Every criterion from PRD §30, checked against the live deployment at
 <https://autonomy-gate.vercel.app> and against the test suite.
 
-**Verified:** 2026-09-28 · 444 tests · typecheck clean · production build green.
+**Verified:** 2026-09-28 against the deployed application, not only the test
+suite · 447 tests · typecheck clean · production build green.
 
 ## Task-level autonomy
 
@@ -86,6 +87,21 @@ promotion on evidence the evaluation has already found untrustworthy.
 |---|---|
 | Decisions show who, what, why, scope, policy and rule version | Every drawer field, asserted against the source decision. |
 | Historical decisions are not recalculated | The 2026-05-18 record still reads 240 Assisted-mode cases under policy v1.2 and rule v3.1, while the same task today reports 342 Supervised-mode cases under v1.3 and v3.2. |
+
+## Unmeasurable criteria
+
+| Criterion | Evidence |
+|---|---|
+| Not applicable never excuses a mandatory requirement | Required sampling, sampled error rate and override rate all **fail** when their evidence is absent, and block. Only escalation quality, where the window offered no opportunity to observe, is reported as not applicable and does not block. |
+| Minimum stage evidence, rule alignment and evidence coverage are always measurable | Counted directly from records; they cannot become not applicable. |
+
+## Scope restriction while blocked
+
+| Criterion | Evidence |
+|---|---|
+| A person may narrow scope even while promotion is blocked | Offered on every blocked task; reducing exposure is conservative. |
+| No evidence-based scope recommendation is derived from untrustworthy evidence | Live on Draft tax position: *"The current evaluation cannot be trusted, so no segments are proposed: the narrower scope is yours to choose."* All four per-segment verdicts read *Not assessed*. |
+| Promotion remains unavailable | No approve option is offered, and `isRecordableDecision` rejects one regardless of the interface. |
 
 ## Non-goals, confirmed absent
 
