@@ -36,6 +36,19 @@ describe("AppShell", () => {
     expect(screen.getByRole("button", { name: "About this prototype" })).toBeInTheDocument();
   });
 
+  it("keeps the navigation reachable on a narrow screen", () => {
+    // On a phone the four destinations do not fit. The strip scrolls rather than
+    // wrapping each label onto three lines and clipping the last one, which is
+    // what happened before: Audit Log could not be reached at all.
+    const { container } = render(<AppShell>content</AppShell>);
+    const nav = container.querySelector('nav[aria-label="Primary"]');
+    expect(nav?.className).toContain("overflow-x-auto");
+    for (const link of nav?.querySelectorAll("a") ?? []) {
+      expect(link.className).toContain("whitespace-nowrap");
+      expect(link.className).toContain("shrink-0");
+    }
+  });
+
   it("renders its children", () => {
     render(
       <AppShell>

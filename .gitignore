@@ -13,3 +13,5 @@ next-env.d.ts
 .vercel/
 .DS_Store
 Thumbs.db
+
+.vercel

@@ -14,7 +14,12 @@ export function Nav() {
   };
 
   return (
-    <nav aria-label="Primary" className="flex items-center gap-space-xs">
+    // On a narrow screen the strip scrolls rather than forcing the page wider
+    // than the viewport. Items stay on one line so none of them is cut in half.
+    <nav
+      aria-label="Primary"
+      className="-mx-space-xs flex max-w-full items-center gap-space-xs overflow-x-auto px-space-xs"
+    >
       {NAV_ITEMS.map((item) => {
         const active = isActive(item.href);
         return (
@@ -23,7 +28,7 @@ export function Nav() {
             href={item.href}
             aria-current={active ? "page" : undefined}
             className={[
-              "rounded-lg px-space-md py-space-sm font-body-md text-body-md transition-colors",
+              "shrink-0 whitespace-nowrap rounded-lg px-space-md py-space-sm font-body-md text-body-md transition-colors",
               active
                 ? "bg-surface-container-high text-on-surface"
                 : "text-on-surface-variant hover:bg-surface-container hover:text-on-surface",

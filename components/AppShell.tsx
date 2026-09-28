@@ -21,7 +21,7 @@ export function AppShell({ children }: { children: ReactNode }) {
   return (
     <DemoStateProvider>
       <header className="sticky top-0 z-40 border-b border-outline-variant/40 bg-surface-container-low/95 backdrop-blur">
-        <div className="mx-auto flex max-w-[1400px] flex-wrap items-center justify-between gap-space-md px-margin-desktop py-space-md">
+        <div className="mx-auto flex max-w-[1400px] flex-wrap items-center justify-between gap-space-md overflow-hidden px-margin py-space-md lg:px-margin-desktop">
           <div className="flex items-center gap-space-md">
             <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary-container text-on-primary-container">
               <Icon name="verified_user" />
@@ -57,12 +57,12 @@ export function AppShell({ children }: { children: ReactNode }) {
         </div>
       </header>
 
-      <main className="mx-auto w-full max-w-[1400px] flex-1 px-margin-desktop py-space-lg">
+      <main className="mx-auto w-full max-w-[1400px] flex-1 px-margin py-space-lg lg:px-margin-desktop">
         {children}
       </main>
 
       <footer className="border-t border-outline-variant/40 bg-surface-container-low">
-        <div className="mx-auto flex max-w-[1400px] flex-wrap items-center justify-between gap-space-md px-margin-desktop py-space-md">
+        <div className="mx-auto flex max-w-[1400px] flex-wrap items-center justify-between gap-space-md overflow-hidden px-margin py-space-md lg:px-margin-desktop">
           <p className="font-label-md text-label-sm uppercase tracking-wide text-on-surface-variant">
             Task-level autonomy governance // Synthetic prototype data
           </p>
