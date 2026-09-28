@@ -1,150 +1,121 @@
 # Open items
 
-**V1 is complete.** Live at <https://autonomy-gate.vercel.app>, committed on
-`main`, 447 tests, typecheck clean, production build green.
+**V1 is complete and publicly shareable.** Live at
+<https://autonomy-gate.vercel.app>, committed on `main`, 447 tests, typecheck
+clean, production build green.
 
-Nothing below blocks release. This file records genuinely optional work, accepted
-deviations, and deliberate design calls.
+Last updated: 2026-09-29, after the TypeSafe live integration and the
+review-readiness pass.
 
-Last updated: end of Phase 12, after live-site validation.
+Nothing in section 1 blocks release. Sections 2 and 3 are closed and kept only so
+the reasoning is not lost.
 
 ---
 
-## 1. Optional post-MVP enhancements
+## 1. Genuinely open — all optional
 
-None of these is required. The public prototype works honestly and completely
-without either credential, and the About panel says which parts are seeded.
+### 1.1 Live plain-language summaries (Groq) — not configured
 
-### 1.1 Live bounded classification
+Setting `GROQ_API_KEY` in the Vercel project switches the wording of an
+already-final decision from the deterministic template to a rephrasing of it.
+`GROQ_MODEL` overrides the default small model.
 
-`@typesafe-ai/sdk@0.6.0` is installed and `TypeSafeJevProvider` sits behind the
-unchanged `JudgmentProvider` interface. Setting `TYPESAFE_API_KEY` in the Vercel
-project switches to it; nothing above the provider changes.
+Without it the product shows the **Standard summary**, and the About panel says
+so. A test asserts every autonomy outcome is identical with the layer removed, so
+this changes presentation only and can never change a decision.
 
-Verified both ways: with a credential the real provider is used and fails closed
-to `uncertain` when the key is rejected; without one the seeded provider answers
-and the disclosure reflects it.
+**Optional post-MVP. Not required for public sharing.**
 
-### 1.2 Live plain-language summaries
+### 1.2 Other optional work
 
-Setting `GROQ_API_KEY` switches the wording from the deterministic template to a
-rephrasing of the same decision. `GROQ_MODEL` overrides the default small model.
-
-A test asserts every autonomy outcome is identical with the layer removed, so
-this changes presentation only.
-
-### 1.3 Other genuinely optional work
-
-- Push to GitHub so the code is readable alongside the demo.
+- Push to GitHub so the code is readable alongside the demo. The engine-purity
+  test is the most interesting artefact in the repository and currently nobody
+  can see it.
 - A custom domain in place of the `vercel.app` address.
 - Light theme. The approved reference screens are dark-only and so is the build.
 
----
+### 1.3 Known consequence of the live integration
 
-## 2. Accepted deviations
-
-Each was raised, decided, and is closed.
-
-### 2.1 Dataset is 1,444 runs, not the PRD's 800-1,000
-
-Forced arithmetic: the four demo journeys require 342 + 300 + 200 + 200 = 1,042
-runs by policy before the other four tasks exist. No pre-window evidence is
-generated and the four non-journey tasks total 354 runs. Bundled, deterministic,
-36 KB gzipped. **Accepted.**
-
-### 2.2 Three figures differ from the earlier placeholder snapshot
-
-Not reachable as integers at n=342:
-
-| Figure | Placeholder | Actual | Why |
-|---|---:|---:|---|
-| Accuracy | 98.6% | 98.5% | 337/342 = 98.54%, 338/342 = 98.83% |
-| Confident-but-wrong | 0.7% | 0.88% | 2/342 = 0.58%, 3/342 = 0.88% |
-| Sampled error rate | 0.8% | 0.0% | 41 sampled; 0 gives 0%, 1 gives 2.4% |
-
-Gating behaviour is identical: one failing criterion, and it is
-confident-but-wrong. **Accepted - the generated values stand.**
-
-### 2.3 Tailwind 3.4 rather than 4.x
-
-The approved screens are a v3 config, extracted programmatically into
-`design/tokens.json`. **Accepted.**
-
-### 2.4 No `AGENT_ID` chip on Screen 1
-
-Those identifiers do not exist in the data model, and decorative technical IDs
-conflict with PRD section 3.10. **Accepted - not restored.**
-
-### 2.5 Confirming the classification as critical yields `RESTRICT_SCOPE`
-
-The error sits in Complex AU while the routine segments stay clean, so the engine
-argues for a narrower fence rather than stopping the task outright. This is the
-section 24.5 behaviour. **Accepted.**
-
-### 2.6 Brief flash before a visitor's changes apply
-
-Pages are prerendered from the seeded state; a visitor's changes live in their
-browser. About a tenth of a second, after which a banner explains what changed.
-**Accepted.**
+Every visitor who clicks **Classify the note again** spends TypeSafe quota. A
+rate-limited or failed call degrades to *"This case needs human review"*, which
+is correct behaviour and leaves autonomy untouched — but it is less impressive
+than the live path during a demo. Removing `TYPESAFE_API_KEY` from the Vercel
+project reverts to seeded responses at any time, and the About panel updates
+itself. **No action needed; noted so the trade-off is a choice rather than a
+surprise.**
 
 ---
 
-## 3. Deliberate design calls
+## 2. Completed
 
-### 3.1 Not applicable never excuses a mandatory requirement
+### 2.1 Live bounded classification (TypeSafe) — **integration completed 2026-09-29**
 
-Two different reasons a criterion can be unmeasurable, and they behave
-differently:
+`TYPESAFE_API_KEY` is set in the Vercel project as a hidden secret, production
+scope only. `TypeSafeJevProvider` sits behind the unchanged `JudgmentProvider`
+interface; nothing above the provider changed to enable it.
 
-- **No opportunity to observe.** No case in the window called for escalation, so
-  escalation quality could not be judged either way. Reported as *Not
-  applicable*, and does not block. This is the only such criterion.
-- **Mandatory, evidence absent.** A policy requiring 10% of completed cases be
-  sampled is not satisfied by sampling none of them. Required sampling, sampled
-  error rate and override rate all **fail** when unmeasurable, and block.
+Verified on the live site:
 
-Minimum stage evidence, rule alignment and evidence coverage are counted directly
-and are always measurable.
+| Check | Result |
+|---|---|
+| Real service in use | `/api/judgment` returns `live: true`, `source: "live"` |
+| Not a fixed value | Confidence varied 0.91 / 0.90 / 0.88 across three calls; the classification stayed `material_error` |
+| Disclosure is truthful | About panel reads *"Currently produced by a live external service"* |
+| Groq correctly absent | Same panel reads *"written from fixed templates"*; scorecards show **Standard summary** |
+| No credential exposure | 9 client bundles, inline scripts and full page HTML all clean; the key is a hidden Vercel secret and appears in no response |
+| Fails safe | A rejected key returns `uncertain` at confidence 0 → *"This case needs human review"*; the task stayed **L3 · Supervised / Eligible / Remain Supervised** with criteria still assessed |
+| Bounded either way | The answer is narrowed against our own vocabulary at runtime, so an unrecognised label becomes `uncertain` rather than evidence |
 
-### 3.2 Scope restriction while blocked
+The credential is held in `.env.local` locally (gitignored) and in Vercel for
+production. `.env.example` carries a blank placeholder and is the only env file
+tracked by git.
 
-Narrowing scope stays available to a person whenever promotion is blocked,
-because reducing exposure is conservative.
+### 2.2 Review-readiness cleanup — completed 2026-09-29
 
-But where evaluation is paused because the evidence itself cannot be trusted - a
-rule-version mismatch, an unrevalidated configuration, an open blocking issue -
-the product proposes **no segments of its own**. Deriving a fence from the
-evaluation it has just declared untrustworthy would be incoherent. The option is
-offered with the existing scope, and the narrower boundary is the reviewer's to
-choose. Promotion remains unavailable either way.
+Five clarity and correctness defects found by reviewing the product as a
+first-time visitor, all fixed and verified live:
 
-### 3.3 Evaluator-maturity rate measured but non-gating
-
-`unresolved_classification_rate` is computed and exposed on the metrics. PRD
-section 12.4 says the 10% guardrail "does not directly change autonomy unless
-encoded in policy", and the prototype policies deliberately do not encode it. The
-hook is in place. **Accepted for V1.**
+- The Sandbox continuity button was disabled with no explanation of what was
+  missing. It now names each outstanding requirement, and the reason field shows
+  a character count. Same treatment applied to the autonomy decision form.
+- The reason-category chips on both forms had no label. Now labelled
+  **Category (optional)**, and exposed as a labelled group to screen readers.
+- **Confirm as …** recorded a hardcoded `material_error` regardless of its own
+  label. It now records the classification the view actually holds. Harmless with
+  the current seed, wrong for any other.
+- A vestigial `aligned ? "on" : "on"` ternary on the configuration panel.
+- **Reset demo** counted only decisions, so changing a classification showed
+  *"Reset demo (0)"* and *"Discard 0 recorded decisions?"* with real work to
+  undo. It now counts every kind of change.
 
 ---
 
-## 4. Resolved during the build
+## 3. Accepted deviations and deliberate design calls
 
-- **Mandatory criteria could become non-blocking N/A** (Phase 12). Sample
-  coverage, sampled error rate and override rate all silently stopped blocking
-  when unmeasurable. Fixed; only escalation quality remains observation-dependent.
-- **A fence was proposed from untrustworthy evidence** (Phase 12). Fixed.
-- **Navigation unreachable on a phone** (Phase 12). Labels wrapped onto three
-  lines and Audit Log was clipped with no way to reach it. The strip now scrolls.
-- **Three incoherent bounded classifications** (Phase 2). Confirmed critical and
-  material errors were attached to runs the agent got right. Retargeted, with
-  three seed invariants to prevent recurrence.
-- **Stale-HMR error** (Phase 5). Investigated rather than assumed; a dev-server
-  artifact, not a defect.
-- **`next lint` removed in Next 16** (Phase 3). Replaced with the ESLint CLI.
-- **Scope table could not explain its own verdicts** (Phase 4). Two segments
-  shared an accuracy and differed in verdict because the verdict turns on
-  confident-but-wrong, which was not a column. Added.
-- **Three of six comprehension questions unanswerable** (Phase 5.5). Fixed in
-  copy and hierarchy; see `docs/comprehension-checkpoint.md`.
-- **Revalidation rendered as an arrow to itself** (Phase 6).
-- **Publishing a policy version created no audit event** (Phase 7).
+Each was raised, decided and closed. Full evidence in
+[`acceptance-matrix.md`](acceptance-matrix.md).
+
+- **Dataset is 1,444 runs, not the PRD's 800–1,000.** The four demo journeys
+  require 1,042 runs by policy before the other four tasks exist. 36 KB gzipped.
+- **Three figures differ from the earlier placeholder snapshot** — accuracy
+  98.5% not 98.6%, confident-but-wrong 0.88% not 0.7%, sampled error 0.0% not
+  0.8%. None is reachable as an integer count at n=342. Gating behaviour is
+  identical.
+- **Tailwind 3.4 rather than 4.x**, for byte-exact parity with the approved v3
+  mockup config.
+- **No `AGENT_ID` chip on Screen 1.** Those identifiers do not exist in the data
+  model, and decorative technical IDs conflict with PRD §3.10.
+- **Confirming a critical classification yields `RESTRICT_SCOPE`,** not a full
+  stop: the error sits in Complex AU while the routine segments stay clean.
+- **Brief flash before a visitor's changes apply.** Pages are prerendered from the
+  seeded state; a banner then explains what changed.
+- **Not applicable never excuses a mandatory requirement.** Required sampling,
+  sampled error rate and override rate *fail* when unmeasurable. Only escalation
+  quality, where the window offered no opportunity to observe, is reported as not
+  applicable and does not block.
+- **No evidence-based scope fence is derived from untrustworthy evidence.**
+  Narrowing stays available to a person; the product proposes no segments of its
+  own.
+- **Evaluator-maturity rate measured but non-gating.** PRD §12.4 says the 10%
+  guardrail does not change autonomy unless encoded in policy, and the prototype
+  policies deliberately do not encode it.

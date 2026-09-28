@@ -58,6 +58,7 @@ export interface ScopeRow {
 
 export interface ClassificationView {
   reviewer_note: string;
+  result: ErrorClassification;
   result_label: string;
   confidence_display: string;
   requires_confirmation: boolean;
@@ -323,6 +324,9 @@ export function buildScorecardMeta(taskId: string): ScorecardMeta | null {
   const classification: ClassificationView | null = judgment
     ? {
         reviewer_note: judgment.reviewer_note,
+        // The label is for display; the value is what a confirmation records, so
+        // the button cannot claim one classification and store another.
+        result: judgment.human_confirmed_result ?? judgment.result,
         result_label: CLASSIFICATION_LABELS[judgment.human_confirmed_result ?? judgment.result],
         confidence_display: judgment.confidence.toFixed(2),
         requires_confirmation: judgment.requires_human_confirmation,

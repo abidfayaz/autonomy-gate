@@ -186,7 +186,7 @@ export function ClassificationPanel({
             <div className="mt-space-md flex flex-wrap gap-space-md">
               <button
                 type="button"
-                onClick={() => record(suggestion?.result ?? "material_error", true)}
+                onClick={() => record(suggestion?.result ?? view.result, true)}
                 className="rounded-lg bg-primary px-space-lg py-space-sm font-body-md text-body-md text-on-primary hover:opacity-90"
               >
                 Confirm as {suggestion ? LABELS[suggestion.result] : view.result_label}

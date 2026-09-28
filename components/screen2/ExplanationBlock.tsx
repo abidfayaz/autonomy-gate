@@ -29,8 +29,11 @@ export function ExplanationBlock({
   const [source, setSource] = useState<"standard" | "live">("standard");
 
   // Reset when the decision changes, so a rephrasing of an earlier outcome is
-  // never left sitting under a new one.
+  // never left sitting under a new one. Deliberately an effect and not a `key`:
+  // showing the wrong decision's wording is the failure this guards against, and
+  // it must clear even when the surrounding element is reused.
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- see above
     setSummary(standard);
     setSource("standard");
   }, [standard]);

@@ -403,7 +403,7 @@ export function ConfigurationSection({ view }: { view: ScorecardView }) {
         ))}
       </dl>
       <p className="mt-space-md font-body-md text-body-sm text-on-surface-variant">
-        Evidence window opened {config.aligned ? "on" : "on"} {view.evidence_window_start}.
+        Evidence window opened on {view.evidence_window_start}.
       </p>
     </Panel>
   );

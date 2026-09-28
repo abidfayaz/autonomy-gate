@@ -18,13 +18,16 @@ export function ResetDemo() {
 
   if (!ready || !hasVisitorChanges(state)) return null;
 
-  const count = state.decisions.length;
+  // Every kind of change, not only decisions: the control appears for any of
+  // them, so counting one kind made it read "Reset demo (0)" with work to undo.
+  const count =
+    state.decisions.length + state.policies.length + state.classifications.length;
 
   if (confirming) {
     return (
       <span className="inline-flex items-center gap-space-sm">
         <span className="font-body-md text-body-sm text-on-surface-variant">
-          Discard {count} recorded {count === 1 ? "decision" : "decisions"}?
+          Discard {count} recorded {count === 1 ? "change" : "changes"}?
         </span>
         <button
           type="button"

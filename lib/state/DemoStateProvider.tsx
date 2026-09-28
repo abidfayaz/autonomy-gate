@@ -30,8 +30,11 @@ export function DemoStateProvider({ children }: { children: React.ReactNode }) {
 
   // Read after mount rather than during render: the server has no storage, so
   // reading it earlier would make the first client render disagree with the
-  // server's HTML.
+  // server's HTML. The lint rule below argues against setState in an effect, and
+  // is right in general; here the effect *is* the subscription to an external
+  // store that cannot be read during render, so the one-render cost is the point.
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- see above
     setState(loadDemoState());
     setReady(true);
   }, []);

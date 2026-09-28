@@ -37,6 +37,11 @@ export function SandboxClient({ view }: { view: SandboxView }) {
   const selected = view.options.find((option) => option.action === action) ?? null;
   const canSubmit = selected !== null && reason.trim().length >= 10;
 
+  // A disabled control that does not say what it is waiting for reads as broken.
+  const outstanding: string[] = [];
+  if (!selected) outstanding.push("choose an outcome above");
+  if (reason.trim().length < 10) outstanding.push("give a reason of at least 10 characters");
+
   const submit = () => {
     if (!selected || !canSubmit) return;
     const decision: RecordedDecision = {
@@ -381,7 +386,17 @@ export function SandboxClient({ view }: { view: SandboxView }) {
           <p className="font-label-md text-label-sm uppercase tracking-wide text-on-surface-variant">
             Decision reason <span className="text-error">*</span>
           </p>
-          <div className="mt-space-sm flex flex-wrap gap-space-xs">
+          <p
+            id="continuity-reason-category"
+            className="mt-space-sm font-body-md text-body-sm text-on-surface-variant"
+          >
+            Category (optional)
+          </p>
+          <div
+            className="mt-space-xs flex flex-wrap gap-space-xs"
+            role="group"
+            aria-labelledby="continuity-reason-category"
+          >
             {REASON_CATEGORIES.map((item) => (
               <button
                 key={item}
@@ -405,12 +420,18 @@ export function SandboxClient({ view }: { view: SandboxView }) {
             placeholder="Record why this continuity decision was made. This is kept in the audit history."
             className="mt-space-sm w-full rounded-lg border border-outline-variant/50 bg-surface-container p-space-md font-body-md text-body-md text-on-surface placeholder:text-outline focus:border-primary focus:outline-none"
           />
+          <p className="mt-space-xs font-body-md text-body-sm text-on-surface-variant">
+            {reason.trim().length} characters. A reason of at least 10 characters is required for
+            the audit history.
+          </p>
         </div>
 
         <div className="mt-space-lg flex flex-wrap items-center justify-between gap-space-md">
           <p className="inline-flex items-center gap-space-xs font-body-md text-body-sm text-on-surface-variant">
             <Icon name="lock" className="text-[16px] leading-none" />
-            Submitting records this continuity decision in the audit history.
+            {outstanding.length > 0
+              ? `To record this decision, ${outstanding.join(" and ")}.`
+              : "Submitting records this continuity decision in the audit history."}
           </p>
           <div className="flex flex-wrap gap-space-md">
             <Link

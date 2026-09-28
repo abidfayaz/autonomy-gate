@@ -64,6 +64,14 @@ export function DecisionForm({ data }: { data: DecisionPageData }) {
   const canSubmit =
     selected !== null && reasonProvided && (!acknowledgementNeeded || acknowledged);
 
+  // A disabled control that does not say what it is waiting for reads as broken.
+  const outstanding: string[] = [];
+  if (!selected) outstanding.push("choose a decision above");
+  if (!reasonProvided) outstanding.push("give a reason of at least 10 characters");
+  if (acknowledgementNeeded && !acknowledged) {
+    outstanding.push("acknowledge that this differs from the recommendation");
+  }
+
   const submit = () => {
     if (!selected || !canSubmit) return;
     const decision: RecordedDecision = {
@@ -389,7 +397,17 @@ export function DecisionForm({ data }: { data: DecisionPageData }) {
           <p className="font-label-md text-label-sm uppercase tracking-wide text-on-surface-variant">
             Decision reason <span className="text-error">*</span>
           </p>
-          <div className="mt-space-sm flex flex-wrap gap-space-xs">
+          <p
+            id="decision-reason-category"
+            className="mt-space-sm font-body-md text-body-sm text-on-surface-variant"
+          >
+            Category (optional)
+          </p>
+          <div
+            className="mt-space-xs flex flex-wrap gap-space-xs"
+            role="group"
+            aria-labelledby="decision-reason-category"
+          >
             {REASON_CATEGORIES.map((item) => (
               <button
                 key={item}
@@ -422,7 +440,9 @@ export function DecisionForm({ data }: { data: DecisionPageData }) {
         <div className="mt-space-lg flex flex-wrap items-center justify-between gap-space-md">
           <p className="inline-flex items-center gap-space-xs font-body-md text-body-sm text-on-surface-variant">
             <Icon name="lock" className="text-[16px] leading-none" />
-            Submitting records this decision in the audit history.
+            {outstanding.length > 0
+              ? `To record this decision, ${outstanding.join(", and ")}.`
+              : "Submitting records this decision in the audit history."}
           </p>
           <div className="flex flex-wrap gap-space-md">
             <Link
