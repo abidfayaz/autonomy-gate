@@ -34,15 +34,15 @@ this changes presentation only and can never change a decision.
 - A custom domain in place of the `vercel.app` address.
 - Light theme. The approved reference screens are dark-only and so is the build.
 
-### 1.3 Known consequence of the live integration
+### 1.3 Set a spend cap at TypeSafe — **the one thing still worth doing**
 
-Every visitor who clicks **Classify the note again** spends TypeSafe quota. A
-rate-limited or failed call degrades to *"This case needs human review"*, which
-is correct behaviour and leaves autonomy untouched — but it is less impressive
-than the live path during a demo. Removing `TYPESAFE_API_KEY` from the Vercel
-project reverts to seeded responses at any time, and the About panel updates
-itself. **No action needed; noted so the trade-off is a choice rather than a
-surprise.**
+The usage protection in the code (§2.3) is best effort: counters live in one
+serverless instance's memory, so they reset on a cold start and are not shared
+between concurrent instances. A provider-side spend or quota cap is the only
+thing that makes the bill genuinely bounded. It is a dashboard setting, not code.
+
+Removing `TYPESAFE_API_KEY` from the Vercel project reverts to seeded responses
+at any time, and the About panel updates itself.
 
 ---
 
@@ -69,6 +69,36 @@ Verified on the live site:
 The credential is held in `.env.local` locally (gitignored) and in Vercel for
 production. `.env.example` carries a blank placeholder and is the only env file
 tracked by git.
+
+### 2.3 Usage protection for the live layer — completed 2026-09-29
+
+Two changes, no new product capability, no authentication, no database.
+
+**The endpoint no longer accepts text.** A request names a classification by id
+and the note is looked up from the seed. The product only ever needs to
+re-classify a note that is already seeded, so accepting arbitrary text bought
+nothing and offered a public endpoint that would spend credit on whatever it was
+handed. Verified live: a 200 KB note, a note-only request and an unknown id all
+return 400 with no upstream call. Cost per call is now fixed and known.
+
+**A per-visitor allowance, falling back rather than failing.** Eight calls back
+to back, one returned every 15 seconds, and a ceiling of 400 across all visitors
+per UTC day. Exceeding either selects the seeded provider instead of the live
+one — a path that already existed — and the panel says so. Verified end to end
+against the real provider: calls 1–8 returned `live: true` with confidence
+varying 0.88–0.92; calls 9–12 returned `live: false, limited: true` with the same
+bounded answer, no errors, and a second visitor was unaffected.
+
+The panel's wording when limited:
+
+> Live classification is rate-limited right now, so this is the seeded response.
+> It is still bounded to the same fixed set of options, a person still settles it,
+> and autonomy is unaffected either way.
+
+Only live calls are rationed; with no credential configured nothing is limited.
+`tests/engine/purity.test.ts` now forbids the engine from importing anything
+under `lib/judgment` or `lib/explain` at all, so neither a model's answer nor a
+limit on calling one can reach an autonomy outcome.
 
 ### 2.2 Review-readiness cleanup — completed 2026-09-29
 

@@ -59,6 +59,7 @@ export function ClassificationPanel({
     result: ErrorClassification;
     confidence: number;
     live: boolean;
+    limited: boolean;
   } | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -91,6 +92,7 @@ export function ClassificationPanel({
    * producing a default.
    */
   const rerun = async () => {
+    if (!judgmentId) return;
     setRerunning(true);
     setError(null);
     setSuggestion(null);
@@ -98,7 +100,8 @@ export function ClassificationPanel({
       const response = await fetch("/api/judgment", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ note: view.reviewer_note, question: "error" }),
+        // The classification is named, not carried. The server holds the note.
+        body: JSON.stringify({ judgment_id: judgmentId, question: "error" }),
       });
       if (!response.ok) {
         setError("Classification is unavailable. This case needs human review.");
@@ -108,6 +111,7 @@ export function ClassificationPanel({
         result?: ErrorClassification;
         confidence?: number;
         live?: boolean;
+        limited?: boolean;
       };
       if (!body.result || body.result === "uncertain") {
         setError("The note could not be classified confidently. This case needs human review.");
@@ -117,6 +121,7 @@ export function ClassificationPanel({
         result: body.result,
         confidence: body.confidence ?? 0,
         live: body.live ?? false,
+        limited: body.limited ?? false,
       });
     } catch {
       setError("Classification is unavailable. This case needs human review.");
@@ -247,11 +252,22 @@ export function ClassificationPanel({
           )}
 
           {suggestion ? (
-            <p className="mt-space-md rounded-lg border border-outline-variant/30 bg-surface-container p-space-md font-body-md text-body-sm text-on-surface-variant">
-              Suggested classification: {LABELS[suggestion.result]} (confidence{" "}
-              {suggestion.confidence.toFixed(2)}). A suggestion is not evidence until you settle
-              it.
-            </p>
+            <div className="mt-space-md rounded-lg border border-outline-variant/30 bg-surface-container p-space-md">
+              <p className="font-body-md text-body-sm text-on-surface-variant">
+                Suggested classification: {LABELS[suggestion.result]} (confidence{" "}
+                {suggestion.confidence.toFixed(2)}). A suggestion is not evidence until you settle
+                it.
+              </p>
+              {/* Said plainly rather than quietly substituted: this product's
+                  argument is that it tells you which parts are live. */}
+              {suggestion.limited ? (
+                <p className="mt-space-sm font-body-md text-body-sm text-on-surface-variant">
+                  Live classification is rate-limited right now, so this is the seeded response.
+                  It is still bounded to the same fixed set of options, a person still settles it,
+                  and autonomy is unaffected either way.
+                </p>
+              ) : null}
+            </div>
           ) : null}
 
           {error ? (

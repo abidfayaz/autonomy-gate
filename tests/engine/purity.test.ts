@@ -24,6 +24,11 @@ const FORBIDDEN_IMPORTS = [
   "node:child_process",
   "groq-sdk",
   "@typesafe-ai/sdk",
+  // Not just the SDKs: nothing in the judgment or explanation layers either, so
+  // neither a model's answer nor a usage limit on calling one can reach an
+  // outcome. A rate-limited classification must be incapable of moving autonomy.
+  "@/lib/judgment",
+  "@/lib/explain",
   "@/lib/data/",
   "@/data/",
 ];

@@ -151,6 +151,73 @@ describe("classifying the note again", () => {
     expect(loadDemoState().classifications).toHaveLength(0);
   });
 
+  it("names the classification instead of sending its text", async () => {
+    const user = userEvent.setup();
+    // Typed like `fetch`, so the recorded arguments can be inspected below.
+    const fetchMock = vi.fn(async (_input: RequestInfo | URL, _init?: RequestInit) =>
+      new Response(JSON.stringify({ result: "material_error", confidence: 0.88, live: true }), {
+        status: 200,
+        headers: { "Content-Type": "application/json" },
+      }),
+    );
+    vi.stubGlobal("fetch", fetchMock);
+
+    await renderScorecard();
+    await user.click(screen.getByRole("button", { name: "Classify the note again" }));
+
+    // The explanation layer also calls out on mount, so find this call by route.
+    const call = fetchMock.mock.calls.find(([url]) => String(url) === "/api/judgment");
+    expect(call, "the panel should have called /api/judgment").toBeDefined();
+    const sent = JSON.parse(String(call?.[1]?.body));
+    expect(sent.judgment_id).toBe("JDG-001");
+    expect(sent.question).toBe("error");
+    // The note stays on the server. Sending it would reopen a public endpoint
+    // that spends credit on whatever it is handed.
+    expect(sent).not.toHaveProperty("note");
+  });
+
+  it("says so when the live layer is rate-limited, rather than passing a seed off as live", async () => {
+    const user = userEvent.setup();
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(async () =>
+        new Response(
+          JSON.stringify({ result: "material_error", confidence: 0.88, live: false, limited: true }),
+          { status: 200, headers: { "Content-Type": "application/json" } },
+        ),
+      ),
+    );
+
+    await renderScorecard();
+    await user.click(screen.getByRole("button", { name: "Classify the note again" }));
+
+    // The suggestion still arrives: a limit degrades the source, not the product.
+    expect(await screen.findByText(/Suggested classification: Material error/)).toBeInTheDocument();
+    expect(screen.getByText(/rate-limited right now, so this is the seeded response/)).toBeInTheDocument();
+    expect(screen.getByText(/autonomy is unaffected either way/)).toBeInTheDocument();
+    // And still nothing is recorded without a person.
+    expect(loadDemoState().classifications).toHaveLength(0);
+  });
+
+  it("does not mention a limit on a normal live answer", async () => {
+    const user = userEvent.setup();
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(async () =>
+        new Response(
+          JSON.stringify({ result: "material_error", confidence: 0.91, live: true, limited: false }),
+          { status: 200, headers: { "Content-Type": "application/json" } },
+        ),
+      ),
+    );
+
+    await renderScorecard();
+    await user.click(screen.getByRole("button", { name: "Classify the note again" }));
+
+    expect(await screen.findByText(/Suggested classification: Material error/)).toBeInTheDocument();
+    expect(screen.queryByText(/rate-limited/)).not.toBeInTheDocument();
+  });
+
   it("routes to a person when the layer is unavailable, rather than defaulting", async () => {
     const user = userEvent.setup();
     vi.stubGlobal(
