@@ -3,8 +3,19 @@
 Every criterion from PRD §30, checked against the live deployment at
 <https://autonomy-gate.vercel.app> and against the test suite.
 
-**Verified:** 2026-09-28 against the deployed application, not only the test
-suite · 447 tests · typecheck clean · production build green.
+**Criteria swept:** 2026-09-28 against the deployed application, not only the
+test suite.
+
+**Suite as of 2026-09-29:** 467 tests · typecheck clean · production build
+green · lint 0 errors, 3 warnings (a Next.js font hint that does not apply to
+the App Router, and two config-file style hints; none in product code).
+
+Two changes reached the deployment after that sweep, both on 2026-09-29:
+disabled controls and the live classification layer were made honest about
+their own state, and the live classification layer was rationed
+([open-items.md](open-items.md) §2.3). Neither alters any autonomy behaviour
+recorded below, and the recommendation, eligibility and classification state
+were re-checked on the live site after each.
 
 ## Task-level autonomy
 
