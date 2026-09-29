@@ -15,3 +15,11 @@ next-env.d.ts
 Thumbs.db
 
 .vercel
+
+# Working material kept out of the public repository: the PRD, the recorded
+# clarification decisions and the agent correspondence. They stay on disk.
+Agent's Understanding.*
+Autonomy Gate_Phase _Plan.*
+Autonomy_Gate_PRD_v1.0_Final.md
+Questions_set_2.*
+Response to coding agent*

@@ -42,8 +42,9 @@ Pending decisions, accepted deviations and carried-forward work are tracked in
 
 ## Source of truth
 
-- **Product behaviour** — `Autonomy_Gate_PRD_v1.0_Final.md`, plus the recorded clarification
-  decisions.
+- **Product behaviour** — the Autonomy Gate PRD and the recorded clarification decisions.
+  Both are working material and are not published here; the behaviour they specify is
+  checked against the live deployment in [docs/acceptance-matrix.md](docs/acceptance-matrix.md).
 - **Visual direction** — the six approved `Autonomy_Gate_*.html` reference screens.
   Design tokens are extracted from them programmatically into `design/tokens.json`.
 - **Build sequence** — the approved progressive implementation plan and `docs/plan-amendments.md`.
