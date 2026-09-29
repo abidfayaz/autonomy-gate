@@ -1,11 +1,11 @@
 # Open items
 
 **V1 is complete and publicly shareable.** Live at
-<https://autonomy-gate.vercel.app>, committed on `main`, 447 tests, typecheck
+<https://autonomy-gate.vercel.app>, committed on `main`, 467 tests, typecheck
 clean, production build green.
 
-Last updated: 2026-09-29, after the TypeSafe live integration and the
-review-readiness pass.
+Last updated: 2026-09-29, after the TypeSafe live integration, the
+review-readiness pass and the usage protection on the live layer.
 
 Nothing in section 1 blocks release. Sections 2 and 3 are closed and kept only so
 the reasoning is not lost.
